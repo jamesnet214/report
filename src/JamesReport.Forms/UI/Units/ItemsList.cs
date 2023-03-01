@@ -10,5 +10,10 @@ namespace JamesReport.Forms.UI.Units
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(ItemsList), new FrameworkPropertyMetadata(typeof(ItemsList)));
         }
+
+        protected override DependencyObject GetContainerForItemOverride()
+        {
+            return new ItemsListItem();
+        }
     }
 }

@@ -5,7 +5,12 @@
     <TargetFramework>net7.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon>Properties\report.ico</ApplicationIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="Properties\report.ico" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Jamesnet.Wpf" Version="1.0.0.7" />

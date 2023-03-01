@@ -3,7 +3,7 @@ using System.Windows.Controls;
 
 namespace JamesReport.Forms.UI.Units
 {
-    public class ItemsListItem : ListBox
+    public class ItemsListItem : ListBoxItem
     {
         static ItemsListItem()
         {
