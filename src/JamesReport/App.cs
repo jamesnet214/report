@@ -1,4 +1,5 @@
 ﻿using Jamesnet.Wpf.Controls;
+using JamesReport.Forms.UI.Views;
 using System.Windows;
 
 namespace JamesReport
@@ -7,7 +8,7 @@ namespace JamesReport
     {
         protected override Window CreateShell()
         {
-            return new Window();
+            return new ReportWindow();
         }
     }
 }

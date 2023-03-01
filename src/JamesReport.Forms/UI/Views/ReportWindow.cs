@@ -4,7 +4,7 @@ using System.Windows.Controls;
 
 namespace JamesReport.Forms.UI.Views
 {
-    public class ReportWindow : JamesContent
+    public class ReportWindow : JamesWindow
     {
         static ReportWindow()
         {

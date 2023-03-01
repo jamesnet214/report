@@ -11,4 +11,8 @@
     <PackageReference Include="Jamesnet.Wpf" Version="1.0.0.4" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\JamesReport.Forms\JamesReport.Forms.csproj" />
+  </ItemGroup>
+
 </Project>
