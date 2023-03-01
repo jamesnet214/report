@@ -14,8 +14,9 @@
                     <Border Background="{TemplateBinding Background}"
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}">
-                        <TextBlock Text="계약서"
-                                   FontSize="40"/>
+                        <TextBlock Text="{TemplateBinding Content}"
+                                   TextWrapping="WrapWithOverflow"
+                                   FontSize="{TemplateBinding FontSize}"/>
                     </Border>
                 </ControlTemplate>
             </Setter.Value>

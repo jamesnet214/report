@@ -17,7 +17,9 @@
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
                             <units:ItemsList ItemsSource="{Binding Tools}"/>
-                            <Border Grid.Column="1" Grid.ColumnSpan="2" Background="#DFDFDF"/>
+                            <Border Grid.Column="1" 
+                                    Grid.ColumnSpan="2" 
+                                    Background="#DFDFDF"/>
                             <units:PageCanvas Grid.Column="1"/>
                         </Grid>
                     </Border>

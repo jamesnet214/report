@@ -14,27 +14,6 @@
                     <Border Background="{TemplateBinding Background}"
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}">
-                        <Grid GridLinesVisibility="Visible" BorderBrush="Red">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="Auto"/>
-                            </Grid.ColumnDefinitions>
-                            <TextBlock Grid.Row="0" Grid.Column="0" Text="A1"/>
-                            <TextBlock Grid.Row="0" Grid.Column="1" Text="B1"/>
-                            <TextBlock Grid.Row="0" Grid.Column="2" Text="C1"/>
-                            <TextBlock Grid.Row="1" Grid.Column="0" Text="A2"/>
-                            <TextBlock Grid.Row="1" Grid.Column="1" Text="B2"/>
-                            <TextBlock Grid.Row="1" Grid.Column="2" Text="C2"/>
-                            <TextBlock Grid.Row="2" Grid.Column="0" Text="A3"/>
-                            <TextBlock Grid.Row="2" Grid.Column="1" Text="B3"/>
-                            <TextBlock Grid.Row="2" Grid.Column="2" Text="C3"/>
-                        </Grid>
                     </Border>
                 </ControlTemplate>
             </Setter.Value>
