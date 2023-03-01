@@ -10,5 +10,9 @@ namespace JamesReport.Forms.Local.ViewModels
 {
     public class ReportContentViewModel : ObservableObject
     {
+        public ReportContentViewModel()
+        { 
+            
+        }
     }
 }

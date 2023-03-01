@@ -13,6 +13,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Studio", "Studio", "{824DEC
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Partial", "Partial", "{C0477EB5-69CC-40ED-95CE-BEF993A55028}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JamesReport.Core", "JamesReport.Core\JamesReport.Core.csproj", "{034C47A5-B793-421C-A63C-6809E2D685CF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{C9476B04-7C67-4FC4-AA4A-3742E800E55F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C9476B04-7C67-4FC4-AA4A-3742E800E55F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C9476B04-7C67-4FC4-AA4A-3742E800E55F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{034C47A5-B793-421C-A63C-6809E2D685CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{034C47A5-B793-421C-A63C-6809E2D685CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{034C47A5-B793-421C-A63C-6809E2D685CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{034C47A5-B793-421C-A63C-6809E2D685CF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -34,6 +40,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{4AC3FB80-3592-46C8-B751-6EB67BFDB0F5} = {824DECB5-5251-4F43-ADCF-5E34461AD5EB}
 		{C9476B04-7C67-4FC4-AA4A-3742E800E55F} = {C0477EB5-69CC-40ED-95CE-BEF993A55028}
+		{034C47A5-B793-421C-A63C-6809E2D685CF} = {8D07E940-7FC1-4C39-A9F1-E456C842340F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E91A2335-A52C-4A3B-B24E-D5A700F8F889}

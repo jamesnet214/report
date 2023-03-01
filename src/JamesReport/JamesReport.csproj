@@ -8,10 +8,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Jamesnet.Wpf" Version="1.0.0.6" />
+    <PackageReference Include="Jamesnet.Wpf" Version="1.0.0.7" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\JamesReport.Core\JamesReport.Core.csproj" />
     <ProjectReference Include="..\JamesReport.Forms\JamesReport.Forms.csproj" />
   </ItemGroup>
 
