@@ -5,6 +5,7 @@
     xmlns:drags="http://schemas.microsoft.com/xaml/behaviors">
 
     <Style TargetType="{x:Type units:PageCanvas}">
+        <Setter Property="SelectItemCommand" Value="{Binding SelectItemCommand}"/>
         <Setter Property="BorderBrush" Value="#000000"/>
         <Setter Property="BorderThickness" Value="0.51"/>
         <Setter Property="Background" Value="#ffffff"/>

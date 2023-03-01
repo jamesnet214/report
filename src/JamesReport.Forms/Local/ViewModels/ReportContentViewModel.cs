@@ -1,16 +1,17 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
-using Jamesnet.Wpf.Mvvm;
+using CommunityToolkit.Mvvm.Input;
+using Infragistics.Controls.Editors;
+using JamesReport.Core;
 using JamesReport.Data;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace JamesReport.Forms.Local.ViewModels
 {
     public partial class ReportContentViewModel : ObservableObject
     {
+        [ObservableProperty]
+        private DragMoveContent _selectedObject;
+
         [ObservableProperty]
         private List<ToolItem> _tools;
 
@@ -27,6 +28,12 @@ namespace JamesReport.Forms.Local.ViewModels
             source.Add(new ToolItem("Horizontal Line"));
             source.Add(new ToolItem("Image"));
             return source;
+        }
+
+        [RelayCommand]
+        private void SelectItem(DragMoveContent item)
+        {
+            SelectedObject = item;
         }
     }
 }

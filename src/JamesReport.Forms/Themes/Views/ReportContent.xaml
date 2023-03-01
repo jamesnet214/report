@@ -1,6 +1,7 @@
 ﻿<ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:infra="clr-namespace:Infragistics.Controls.Editors;assembly=Infragistics.WPF.Controls.Editors.XamPropertyGrid"
     xmlns:views="clr-namespace:JamesReport.Forms.UI.Views"
     xmlns:units="clr-namespace:JamesReport.Forms.UI.Units">
     
@@ -15,12 +16,14 @@
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto"/>
                                 <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
                             <units:ItemsList ItemsSource="{Binding Tools}"/>
                             <Border Grid.Column="1" 
-                                    Grid.ColumnSpan="2" 
                                     Background="#DFDFDF"/>
                             <units:PageCanvas Grid.Column="1"/>
+                            <infra:XamPropertyGrid Grid.Column="2"
+                                                     SelectedObject="{Binding SelectedObject}"/>
                         </Grid>
                     </Border>
                 </ControlTemplate>
