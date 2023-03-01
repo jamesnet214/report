@@ -7,16 +7,15 @@
         <Setter Property="Background" Value="#333333"/>
         <Setter Property="SnapsToDevicePixels" Value="True"/>
         <Setter Property="UseLayoutRounding" Value="True"/>
-        <Setter Property="Margin" Value="10 10 10 10"/>
         <Setter Property="HorizontalAlignment" Value="Left"/>
-        <Setter Property="Height" Value="1"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type units:HorizontalLine}">
-                    <Border Background="{TemplateBinding Background}"
+                    <Border Background="Transparent"
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}"
-                            Height="{TemplateBinding Height}">
+                            Padding="10 30 10 30">
+                        <Rectangle Height="1" Fill="{TemplateBinding Background}"/>
                     </Border>
                 </ControlTemplate>
             </Setter.Value>

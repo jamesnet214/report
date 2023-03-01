@@ -1,10 +1,11 @@
 ﻿using Jamesnet.Wpf.Controls;
+using JamesReport.Core;
 using System.Windows;
 using System.Windows.Controls;
 
 namespace JamesReport.Forms.UI.Units
 {
-    public class Header : ContentControl
+    public class Header : DragMoveContent
     {
         static Header()
         {

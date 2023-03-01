@@ -9,6 +9,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Properties\emblem.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Include="Properties\report.ico" />
   </ItemGroup>
 
@@ -19,6 +23,10 @@
   <ItemGroup>
     <ProjectReference Include="..\JamesReport.Core\JamesReport.Core.csproj" />
     <ProjectReference Include="..\JamesReport.Forms\JamesReport.Forms.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Properties\emblem.png" />
   </ItemGroup>
 
 </Project>

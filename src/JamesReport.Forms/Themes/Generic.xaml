@@ -3,6 +3,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="/JamesReport.Forms;component/Themes/Units/HorizontalLine.xaml"/>
+        <ResourceDictionary Source="/JamesReport.Forms;component/Themes/Units/Picture.xaml"/>
         <ResourceDictionary Source="/JamesReport.Forms;component/Themes/Units/Header.xaml"/>
         <ResourceDictionary Source="/JamesReport.Forms;component/Themes/Units/Table.xaml"/>
         <ResourceDictionary Source="/JamesReport.Forms;component/Themes/Units/ItemsListItem.xaml"/>

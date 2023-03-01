@@ -6,6 +6,7 @@
     <Geometry x:Key="GTitle">M5,4V7H10.5V19H13.5V7H19V4H5Z</Geometry>
     <Geometry x:Key="GTable">M5,4H19A2,2 0 0,1 21,6V18A2,2 0 0,1 19,20H5A2,2 0 0,1 3,18V6A2,2 0 0,1 5,4M5,8V12H11V8H5M13,8V12H19V8H13M5,14V18H11V14H5M13,14V18H19V14H13Z</Geometry>
     <Geometry x:Key="GLine">M19,13H5V11H19V13Z</Geometry>
+    <Geometry x:Key="GImage">M8.5,13.5L11,16.5L14.5,12L19,18H5M21,19V5C21,3.89 20.1,3 19,3H5A2,2 0 0,0 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19Z</Geometry>
 
     <Style TargetType="{x:Type units:ItemsListItem}">
         <Setter Property="Cursor" Value="Hand"/>
@@ -26,7 +27,7 @@
                                 Margin="4">
                             <Path x:Name="path" Fill="{TemplateBinding Foreground}"/>
                         </Canvas>
-                    </Border>
+                    </Border> 
                     <ControlTemplate.Triggers>
                         <DataTrigger Binding="{Binding Name}" Value="Title">
                             <Setter TargetName="path" Property="Data" Value="{StaticResource GTitle}"/>
@@ -36,6 +37,9 @@
                         </DataTrigger>
                         <DataTrigger Binding="{Binding Name}" Value="Horizontal Line">
                             <Setter TargetName="path" Property="Data" Value="{StaticResource GLine}"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Name}" Value="Image">
+                            <Setter TargetName="path" Property="Data" Value="{StaticResource GImage}"/>
                         </DataTrigger>
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter Property="Foreground" Value="#ffffff"/>

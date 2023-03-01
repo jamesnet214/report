@@ -25,6 +25,7 @@ namespace JamesReport.Forms.Local.ViewModels
             source.Add(new ToolItem("Title"));
             source.Add(new ToolItem("Table"));
             source.Add(new ToolItem("Horizontal Line"));
+            source.Add(new ToolItem("Image"));
             return source;
         }
     }

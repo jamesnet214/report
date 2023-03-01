@@ -3,7 +3,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:units="clr-namespace:JamesReport.Forms.UI.Units">
 
-    <Style TargetType="{x:Type units:Header}">
+    <Style TargetType="{x:Type units:Picture}">
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="SnapsToDevicePixels" Value="True"/>
         <Setter Property="UseLayoutRounding" Value="True"/>
@@ -12,19 +12,13 @@
         <Setter Property="Focusable" Value="True"/>
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="{x:Type units:Header}">
+                <ControlTemplate TargetType="{x:Type units:Picture}">
                     <Border Background="{TemplateBinding Background}"
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}">
-                        <TextBlock Text="{TemplateBinding Content}"
-                                   TextWrapping="WrapWithOverflow"
-                                   FontSize="{TemplateBinding FontSize}"/>
+                        <Image Source="/JamesReport;component/Properties/emblem.png"
+                               Width="200"/>
                     </Border>
-                    <ControlTemplate.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Background" Value="#FAFAFA"/>
-                        </Trigger>
-                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
