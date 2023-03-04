@@ -17,7 +17,7 @@
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}">
                         <Image Source="/JamesReport;component/Properties/emblem.png"
-                               Width="200"/>
+                               Width="{TemplateBinding Width}"/>
                     </Border>
                 </ControlTemplate>
             </Setter.Value>
