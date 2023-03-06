@@ -1,6 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using Infragistics.Controls.Editors;
 using JamesReport.Core;
 using JamesReport.Data;
 using System.Collections.Generic;

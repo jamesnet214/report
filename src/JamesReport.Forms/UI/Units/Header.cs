@@ -1,7 +1,5 @@
-﻿using Jamesnet.Wpf.Controls;
-using JamesReport.Core;
+﻿using JamesReport.Core;
 using System.Windows;
-using System.Windows.Controls;
 
 namespace JamesReport.Forms.UI.Units
 {

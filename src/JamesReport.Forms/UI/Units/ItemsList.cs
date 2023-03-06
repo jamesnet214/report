@@ -1,5 +1,4 @@
-﻿using Jamesnet.Wpf.Controls;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 
 namespace JamesReport.Forms.UI.Units
