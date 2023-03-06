@@ -1,0 +1,122 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:units="clr-namespace:JamesReport.Forms.UI.Units"
+    xmlns:cnvts="clr-namespace:JamesReport.Forms.Local.Converters"
+    xmlns:templ="clr-namespace:JamesReport.Forms.Local.Selectors"
+    xmlns:ctrls="clr-namespace:Jamesnet.Wpf.Controls;assembly=Jamesnet.Wpf">
+    
+    <cnvts:TypeToStringConverter x:Key="TypeToStringConverter"/>
+
+    <DataTemplate x:Key="TableTemplate">
+        <ctrls:JamesGrid DataContext="{Binding RelativeSource={RelativeSource AncestorType=units:PropertyGrid}, Path=DataContext}" 
+                         Rows="auto, auto, auto, auto" 
+                         Columns="auto, *">
+            <TextBlock Text="ActualWidth"
+                       Margin="2"
+                       Padding="2"/>
+            <TextBlock Text="{Binding ActualWidth}"
+                       Margin="2"
+                       Padding="2"/>
+            <TextBlock Text="Width"
+                       Margin="2"
+                       Padding="2"/>
+            <TextBox Text="{Binding Width, UpdateSourceTrigger=PropertyChanged}"
+                     Margin="2"
+                     Padding="2"/>
+            <TextBlock Text="Rows"
+                       Margin="2"
+                       Padding="2"/>
+            <TextBox Text="{Binding Rows, UpdateSourceTrigger=PropertyChanged}"
+                     Margin="2"
+                     Padding="2"/>
+            <TextBlock Text="Columns"
+                       Margin="2"
+                       Padding="2"/>
+            <TextBox Text="{Binding Columns, UpdateSourceTrigger=PropertyChanged}"
+                     Margin="2"
+                     Padding="2"/>
+        </ctrls:JamesGrid>
+    </DataTemplate>
+
+    <DataTemplate x:Key="CellFieldTemplate">
+        <ctrls:JamesGrid DataContext="{Binding RelativeSource={RelativeSource AncestorType=units:PropertyGrid}, Path=DataContext}" 
+                         Rows="auto, auto, auto, auto, auto, auto" 
+                         Columns="auto, *">
+            <TextBlock Text="ActualWidth"
+                     Margin="2"
+                     Padding="2"/>
+            <TextBlock Text="{Binding ActualWidth}"
+                     Margin="2"
+                     Padding="2"/>
+            <TextBlock Text="Cell Type"
+                     Margin="2"
+                     Padding="2"/>
+            <ComboBox SelectedValue="{Binding Type, UpdateSourceTrigger=PropertyChanged}"
+                      SelectedValuePath="Tag"
+                     Margin="2"
+                     Padding="2">
+                <ComboBoxItem Tag="Label">Label</ComboBoxItem>
+                <ComboBoxItem Tag="Value">Value</ComboBoxItem>
+            </ComboBox>
+            <TextBlock Text="Text"
+                     Margin="2"
+                     Padding="2"/>
+            <TextBox Text="{Binding Content, UpdateSourceTrigger=PropertyChanged}"
+                     Margin="2"
+                     Padding="2"/>
+            <TextBlock Text="Padding"
+                     Margin="2"
+                     Padding="2"/>
+            <TextBox Text="{Binding Padding, UpdateSourceTrigger=PropertyChanged}"
+                     Margin="2"
+                     Padding="2"/>
+            <TextBlock Text="ColumnSpan"
+                     Margin="2"
+                     Padding="2"/>
+            <TextBox Text="{Binding ColumnSpan, UpdateSourceTrigger=PropertyChanged}"
+                     Margin="2"
+                     Padding="2"/>
+            <TextBlock Text="RowSpan"
+                     Margin="2"
+                     Padding="2"/>
+            <TextBox Text="{Binding RowSpan, UpdateSourceTrigger=PropertyChanged}"
+                     Margin="2"
+                     Padding="2"/>
+        </ctrls:JamesGrid>
+    </DataTemplate>
+
+    <Style TargetType="{x:Type units:PropertyGrid}">
+        <Setter Property="Width" Value="360"/>
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
+        <Setter Property="UseLayoutRounding" Value="True"/>
+        <Setter Property="Margin" Value="10 10 10 10"/>
+        <Setter Property="BorderThickness" Value="1 1 0 0"/>
+        <Setter Property="BorderBrush" Value="#555555"/>
+        <Setter Property="Background" Value="#ffffff"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type units:PropertyGrid}">
+                    <Border Background="{TemplateBinding Background}"
+                            Padding="10">
+                        <StackPanel>
+                            <TextBlock Text="{Binding Converter={StaticResource TypeToStringConverter},Path=.}"
+                                       FontWeight="Bold"
+                                       FontSize="14"
+                                       Padding="0 0 0 10"/>
+                            <ContentPresenter/>
+                        </StackPanel>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <DataTrigger Binding="{Binding Converter={StaticResource TypeToStringConverter},Path=.}" Value="JamesReport.Forms.UI.Units.Table">
+                            <Setter Property="ContentTemplate" Value="{StaticResource TableTemplate}"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Converter={StaticResource TypeToStringConverter},Path=.}" Value="JamesReport.Forms.UI.Units.CellField">
+                            <Setter Property="ContentTemplate" Value="{StaticResource CellFieldTemplate}"/>
+                        </DataTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

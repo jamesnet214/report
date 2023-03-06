@@ -5,9 +5,11 @@
         <ResourceDictionary Source="/JamesReport.Forms;component/Themes/Units/HorizontalLine.xaml"/>
         <ResourceDictionary Source="/JamesReport.Forms;component/Themes/Units/Picture.xaml"/>
         <ResourceDictionary Source="/JamesReport.Forms;component/Themes/Units/Header.xaml"/>
+        <ResourceDictionary Source="/JamesReport.Forms;component/Themes/Units/CellField.xaml"/>
         <ResourceDictionary Source="/JamesReport.Forms;component/Themes/Units/Table.xaml"/>
         <ResourceDictionary Source="/JamesReport.Forms;component/Themes/Units/ItemsListItem.xaml"/>
         <ResourceDictionary Source="/JamesReport.Forms;component/Themes/Units/ItemsList.xaml"/>
+        <ResourceDictionary Source="/JamesReport.Forms;component/Themes/Units/PropertyGrid.xaml"/>
         <ResourceDictionary Source="/JamesReport.Forms;component/Themes/Units/PageCanvas.xaml"/>
         <ResourceDictionary Source="/JamesReport.Forms;component/Themes/Views/ReportContent.xaml"/>
         <ResourceDictionary Source="/JamesReport.Forms;component/Themes/Views/ReportWindow.xaml"/>

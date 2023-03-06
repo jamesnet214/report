@@ -4,7 +4,7 @@ using System.Windows.Controls;
 
 namespace JamesReport.Core
 {
-    public class DragMoveContent : ContentControl
+    public class DragMoveContent : ReportObject
     {
         public DragMoveContent()
         {

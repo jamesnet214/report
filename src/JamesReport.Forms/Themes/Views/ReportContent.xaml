@@ -22,8 +22,15 @@
                             <Border Grid.Column="1" 
                                     Background="#DFDFDF"/>
                             <units:PageCanvas Grid.Column="1"/>
-                            <infra:XamPropertyGrid Grid.Column="2"
-                                                     SelectedObject="{Binding SelectedObject}"/>
+                            <Grid Grid.Column="2">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+
+                                <infra:XamPropertyGrid SelectedObject="{Binding SelectedObject}"/>
+                                <units:PropertyGrid Grid.Row="1" DataContext="{Binding SelectedObject}"/>
+                            </Grid>
                         </Grid>
                     </Border>
                 </ControlTemplate>

@@ -9,7 +9,7 @@ namespace JamesReport.Forms.Local.ViewModels
     public partial class ReportContentViewModel : ObservableObject
     {
         [ObservableProperty]
-        private DragMoveContent _selectedObject;
+        private ReportObject _selectedObject;
 
         [ObservableProperty]
         private List<ToolItem> _tools;
@@ -30,7 +30,7 @@ namespace JamesReport.Forms.Local.ViewModels
         }
 
         [RelayCommand]
-        private void SelectItem(DragMoveContent item)
+        private void SelectItem(ReportObject item)
         {
             SelectedObject = item;
         }
