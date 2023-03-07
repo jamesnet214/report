@@ -12,7 +12,7 @@ namespace JamesReport.Forms.Local.Converters
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return value?.GetType().ToString();
+            return value?.GetType().Name;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

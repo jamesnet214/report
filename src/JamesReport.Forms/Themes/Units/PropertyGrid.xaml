@@ -8,34 +8,45 @@
     
     <cnvts:TypeToStringConverter x:Key="TypeToStringConverter"/>
 
+    <Style TargetType="{x:Type Label}" x:Key="Label">
+        <Setter Property="Margin" Value="0 0 1 1"/>
+        <Setter Property="Padding" Value="8 4 16 4"/>
+        <Setter Property="Background" Value="#FFFFFF"/>
+    </Style>
+
+    <Style TargetType="{x:Type TextBox}" x:Key="TextBox">
+        <Setter Property="Margin" Value="0 0 1 1"/>
+        <Setter Property="Padding" Value="8 4 16 4"/>
+        <Setter Property="Background" Value="#FFFFFF"/>
+        <Setter Property="BorderThickness" Value="0"/>
+    </Style>
+
+    <Style TargetType="{x:Type TextBox}" x:Key="TextBoxReadOnly" BasedOn="{StaticResource TextBox}">
+        <Setter Property="IsReadOnly" Value="True"/>
+    </Style>
+
+    <Style TargetType="{x:Type ComboBox}" x:Key="ComboBox">
+        <Setter Property="Margin" Value="0 0 1 1"/>
+        <Setter Property="Padding" Value="8 4 16 4"/>
+        <Setter Property="Background" Value="#FFFFFF"/>
+        <Setter Property="BorderThickness" Value="0"/>
+    </Style>
+    
     <DataTemplate x:Key="TableTemplate">
         <ctrls:JamesGrid DataContext="{Binding RelativeSource={RelativeSource AncestorType=units:PropertyGrid}, Path=DataContext}" 
                          Rows="auto, auto, auto, auto" 
                          Columns="auto, *">
-            <TextBlock Text="ActualWidth"
-                       Margin="2"
-                       Padding="2"/>
-            <TextBlock Text="{Binding ActualWidth}"
-                       Margin="2"
-                       Padding="2"/>
-            <TextBlock Text="Width"
-                       Margin="2"
-                       Padding="2"/>
-            <TextBox Text="{Binding Width, UpdateSourceTrigger=PropertyChanged}"
-                     Margin="2"
-                     Padding="2"/>
-            <TextBlock Text="Rows"
-                       Margin="2"
-                       Padding="2"/>
-            <TextBox Text="{Binding Rows, UpdateSourceTrigger=PropertyChanged}"
-                     Margin="2"
-                     Padding="2"/>
-            <TextBlock Text="Columns"
-                       Margin="2"
-                       Padding="2"/>
-            <TextBox Text="{Binding Columns, UpdateSourceTrigger=PropertyChanged}"
-                     Margin="2"
-                     Padding="2"/>
+            <Label Style="{StaticResource Label}" Content="ActualWidth"/>
+            <TextBox Style="{StaticResource TextBoxReadOnly}" Text="{Binding ActualWidth, Mode=OneWay}"/>
+            
+            <Label Style="{StaticResource Label}" Content="Width"/>
+            <TextBox Style="{StaticResource TextBox}" Text="{Binding Width, UpdateSourceTrigger=PropertyChanged}"/>
+            
+            <Label Style="{StaticResource Label}" Content="Rows"/>
+            <TextBox Style="{StaticResource TextBox}" Text="{Binding Rows, UpdateSourceTrigger=PropertyChanged}"/>
+            
+            <Label Style="{StaticResource Label}" Content="Columns"/>
+            <TextBox Style="{StaticResource TextBox}" Text="{Binding Columns, UpdateSourceTrigger=PropertyChanged}"/>
         </ctrls:JamesGrid>
     </DataTemplate>
 
@@ -43,62 +54,44 @@
         <ctrls:JamesGrid DataContext="{Binding RelativeSource={RelativeSource AncestorType=units:PropertyGrid}, Path=DataContext}" 
                          Rows="auto, auto, auto, auto, auto, auto" 
                          Columns="auto, *">
-            <TextBlock Text="ActualWidth"
-                     Margin="2"
-                     Padding="2"/>
-            <TextBlock Text="{Binding ActualWidth}"
-                     Margin="2"
-                     Padding="2"/>
-            <TextBlock Text="Cell Type"
-                     Margin="2"
-                     Padding="2"/>
-            <ComboBox SelectedValue="{Binding Type, UpdateSourceTrigger=PropertyChanged}"
-                      SelectedValuePath="Tag"
-                     Margin="2"
-                     Padding="2">
+            
+            <Label Style="{StaticResource Label}" Content="ActualWidth"/>
+            <TextBox Style="{StaticResource TextBoxReadOnly}" Text="{Binding ActualWidth, Mode=OneWay}"/>
+            
+            <Label Style="{StaticResource Label}" Content="Cell type"/>
+            <ComboBox Style="{StaticResource ComboBox}" 
+                      SelectedValue="{Binding Type, UpdateSourceTrigger=PropertyChanged}"
+                      SelectedValuePath="Tag">
                 <ComboBoxItem Tag="Label">Label</ComboBoxItem>
                 <ComboBoxItem Tag="Value">Value</ComboBoxItem>
             </ComboBox>
-            <TextBlock Text="Text"
-                     Margin="2"
-                     Padding="2"/>
-            <TextBox Text="{Binding Content, UpdateSourceTrigger=PropertyChanged}"
-                     Margin="2"
-                     Padding="2"/>
-            <TextBlock Text="Padding"
-                     Margin="2"
-                     Padding="2"/>
-            <TextBox Text="{Binding Padding, UpdateSourceTrigger=PropertyChanged}"
-                     Margin="2"
-                     Padding="2"/>
-            <TextBlock Text="ColumnSpan"
-                     Margin="2"
-                     Padding="2"/>
-            <TextBox Text="{Binding ColumnSpan, UpdateSourceTrigger=PropertyChanged}"
-                     Margin="2"
-                     Padding="2"/>
-            <TextBlock Text="RowSpan"
-                     Margin="2"
-                     Padding="2"/>
-            <TextBox Text="{Binding RowSpan, UpdateSourceTrigger=PropertyChanged}"
-                     Margin="2"
-                     Padding="2"/>
+            
+            <Label Style="{StaticResource Label}" Content="Text"/>
+            <TextBox Style="{StaticResource TextBox}" Text="{Binding Content, UpdateSourceTrigger=PropertyChanged}"/>
+            
+            <Label Style="{StaticResource Label}" Content="Padding"/>
+            <TextBox Style="{StaticResource TextBox}" Text="{Binding Padding, UpdateSourceTrigger=PropertyChanged}"/>
+            
+            <Label Style="{StaticResource Label}" Content="Row span"/>
+            <TextBox Style="{StaticResource TextBox}" Text="{Binding RowSpan, UpdateSourceTrigger=PropertyChanged}"/>
+            
+            <Label Style="{StaticResource Label}" Content="Column span"/>
+            <TextBox Style="{StaticResource TextBox}" Text="{Binding ColumnSpan, UpdateSourceTrigger=PropertyChanged}"/>
         </ctrls:JamesGrid>
     </DataTemplate>
 
     <Style TargetType="{x:Type units:PropertyGrid}">
-        <Setter Property="Width" Value="360"/>
         <Setter Property="SnapsToDevicePixels" Value="True"/>
         <Setter Property="UseLayoutRounding" Value="True"/>
-        <Setter Property="Margin" Value="10 10 10 10"/>
+        <Setter Property="Margin" Value="0"/>
         <Setter Property="BorderThickness" Value="1 1 0 0"/>
         <Setter Property="BorderBrush" Value="#555555"/>
-        <Setter Property="Background" Value="#ffffff"/>
+        <Setter Property="Background" Value="#EEEEEE"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type units:PropertyGrid}">
                     <Border Background="{TemplateBinding Background}"
-                            Padding="10">
+                            Padding="4 0 4 0">
                         <StackPanel>
                             <TextBlock Text="{Binding Converter={StaticResource TypeToStringConverter},Path=.}"
                                        FontWeight="Bold"
@@ -108,10 +101,10 @@
                         </StackPanel>
                     </Border>
                     <ControlTemplate.Triggers>
-                        <DataTrigger Binding="{Binding Converter={StaticResource TypeToStringConverter},Path=.}" Value="JamesReport.Forms.UI.Units.Table">
+                        <DataTrigger Binding="{Binding Converter={StaticResource TypeToStringConverter},Path=.}" Value="Table">
                             <Setter Property="ContentTemplate" Value="{StaticResource TableTemplate}"/>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding Converter={StaticResource TypeToStringConverter},Path=.}" Value="JamesReport.Forms.UI.Units.CellField">
+                        <DataTrigger Binding="{Binding Converter={StaticResource TypeToStringConverter},Path=.}" Value="CellField">
                             <Setter Property="ContentTemplate" Value="{StaticResource CellFieldTemplate}"/>
                         </DataTrigger>
                     </ControlTemplate.Triggers>
