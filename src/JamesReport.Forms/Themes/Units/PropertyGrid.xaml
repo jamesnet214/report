@@ -34,11 +34,18 @@
     
     <DataTemplate x:Key="TableTemplate">
         <ctrls:JamesGrid DataContext="{Binding RelativeSource={RelativeSource AncestorType=units:PropertyGrid}, Path=DataContext}" 
-                         Rows="auto, auto, auto, auto" 
+                         Rows="auto, auto, auto, auto, auto" 
                          Columns="auto, *">
+            
             <Label Style="{StaticResource Label}" Content="ActualWidth"/>
             <TextBox Style="{StaticResource TextBoxReadOnly}" Text="{Binding ActualWidth, Mode=OneWay}"/>
-            
+        
+            <Label Style="{StaticResource Label}" Content="Canvas.Top"/>
+            <TextBox Style="{StaticResource TextBox}" Text="{Binding RenderTransform.Value.OffsetX}"/>
+
+            <Label Style="{StaticResource Label}" Content="Canvas.Top"/>
+            <TextBox Style="{StaticResource TextBox}" Text="{Binding (Canvas.Top)}"/>
+
             <Label Style="{StaticResource Label}" Content="Width"/>
             <TextBox Style="{StaticResource TextBox}" Text="{Binding Width, UpdateSourceTrigger=PropertyChanged}"/>
             
@@ -46,6 +53,9 @@
             <TextBox Style="{StaticResource TextBox}" Text="{Binding Rows, UpdateSourceTrigger=PropertyChanged}"/>
             
             <Label Style="{StaticResource Label}" Content="Columns"/>
+            <TextBox Style="{StaticResource TextBox}" Text="{Binding Columns, UpdateSourceTrigger=PropertyChanged}"/>
+
+            <Label Style="{StaticResource Label}" Content="Add item"/>
             <TextBox Style="{StaticResource TextBox}" Text="{Binding Columns, UpdateSourceTrigger=PropertyChanged}"/>
         </ctrls:JamesGrid>
     </DataTemplate>
@@ -80,10 +90,17 @@
         </ctrls:JamesGrid>
     </DataTemplate>
 
+    <Style TargetType="{x:Type TextBlock}" x:Key="Header">
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="Padding" Value="0 6 0 6"/>
+    </Style>
+
     <Style TargetType="{x:Type units:PropertyGrid}">
         <Setter Property="SnapsToDevicePixels" Value="True"/>
         <Setter Property="UseLayoutRounding" Value="True"/>
         <Setter Property="Margin" Value="0"/>
+        <Setter Property="Padding" Value="10 0 10 0"/>
         <Setter Property="BorderThickness" Value="1 1 0 0"/>
         <Setter Property="BorderBrush" Value="#555555"/>
         <Setter Property="Background" Value="#EEEEEE"/>
@@ -91,12 +108,9 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type units:PropertyGrid}">
                     <Border Background="{TemplateBinding Background}"
-                            Padding="4 0 4 0">
+                            Padding="{TemplateBinding Padding}">
                         <StackPanel>
-                            <TextBlock Text="{Binding Converter={StaticResource TypeToStringConverter},Path=.}"
-                                       FontWeight="Bold"
-                                       FontSize="14"
-                                       Padding="0 0 0 10"/>
+                            <TextBlock Style="{StaticResource Header}" Text="{Binding Converter={StaticResource TypeToStringConverter},Path=.}"/>
                             <ContentPresenter/>
                         </StackPanel>
                     </Border>
