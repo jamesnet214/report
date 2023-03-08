@@ -34,17 +34,14 @@
     
     <DataTemplate x:Key="TableTemplate">
         <ctrls:JamesGrid DataContext="{Binding RelativeSource={RelativeSource AncestorType=units:PropertyGrid}, Path=DataContext}" 
-                         Rows="auto, auto, auto, auto, auto" 
+                         Rows="auto, auto, auto, auto, auto, auto" 
                          Columns="auto, *">
             
             <Label Style="{StaticResource Label}" Content="ActualWidth"/>
             <TextBox Style="{StaticResource TextBoxReadOnly}" Text="{Binding ActualWidth, Mode=OneWay}"/>
-        
-            <Label Style="{StaticResource Label}" Content="Canvas.Top"/>
-            <TextBox Style="{StaticResource TextBox}" Text="{Binding RenderTransform.Value.OffsetX}"/>
 
-            <Label Style="{StaticResource Label}" Content="Canvas.Top"/>
-            <TextBox Style="{StaticResource TextBox}" Text="{Binding (Canvas.Top)}"/>
+            <Label Style="{StaticResource Label}" Content="RenderTransform.Value.OffsetX"/>
+            <TextBox Style="{StaticResource TextBox}" Text="{Binding RenderTransform.Value.OffsetX}"/>
 
             <Label Style="{StaticResource Label}" Content="Width"/>
             <TextBox Style="{StaticResource TextBox}" Text="{Binding Width, UpdateSourceTrigger=PropertyChanged}"/>
@@ -53,9 +50,6 @@
             <TextBox Style="{StaticResource TextBox}" Text="{Binding Rows, UpdateSourceTrigger=PropertyChanged}"/>
             
             <Label Style="{StaticResource Label}" Content="Columns"/>
-            <TextBox Style="{StaticResource TextBox}" Text="{Binding Columns, UpdateSourceTrigger=PropertyChanged}"/>
-
-            <Label Style="{StaticResource Label}" Content="Add item"/>
             <TextBox Style="{StaticResource TextBox}" Text="{Binding Columns, UpdateSourceTrigger=PropertyChanged}"/>
         </ctrls:JamesGrid>
     </DataTemplate>
