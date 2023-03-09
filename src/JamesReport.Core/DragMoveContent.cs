@@ -1,6 +1,5 @@
 ﻿using Microsoft.Xaml.Behaviors;
 using Microsoft.Xaml.Behaviors.Layout;
-using System.Windows.Controls;
 
 namespace JamesReport.Core
 {

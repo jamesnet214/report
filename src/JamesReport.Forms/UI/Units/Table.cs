@@ -1,18 +1,32 @@
 ﻿using Jamesnet.Wpf.Controls;
 using JamesReport.Core;
 using JamesReport.Data;
-using Microsoft.VisualBasic;
-using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
-using System.Windows.Documents;
+using System.Windows.Input;
 
 namespace JamesReport.Forms.UI.Units
 {
     public class Table : DragMoveContent
     {
+        public static readonly DependencyProperty ItemsCountProperty = DependencyProperty.Register("ItemsCount", typeof(int), typeof(Table), new PropertyMetadata(0, ItemsCountPropertyChanged));
+        public static readonly DependencyProperty AddCellFieldCommandProperty = DependencyProperty.Register("AddCellFieldCommand", typeof(ICommand), typeof(Table), new PropertyMetadata(null));
         public static readonly DependencyProperty RowsProperty = DependencyProperty.Register("Rows", typeof(string), typeof(Table), new PropertyMetadata("", RowsPropertyChanged));
         public static readonly DependencyProperty ColumnsProperty = DependencyProperty.Register("Columns", typeof(string), typeof(Table), new PropertyMetadata("", ColumnsPropertyChanged));
         private JamesGrid _grid;
+
+        public int ItemsCount
+        {
+            get { return (int)GetValue(ItemsCountProperty); }
+            set { SetValue(ItemsCountProperty, value); }
+        }
+
+        public ICommand AddCellFieldCommand
+        {
+            get { return (ICommand)GetValue(AddCellFieldCommandProperty); }
+            set { SetValue(AddCellFieldCommandProperty, value); }
+        }
 
         public string Rows
         {
@@ -41,27 +55,52 @@ namespace JamesReport.Forms.UI.Units
 
         private static void RowsPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            try
+            Table table = (Table)d;
+            if (table._grid != null)
             {
-                Table table = (Table)d;
-                table._grid.Rows = e.NewValue.ToString();
-            }
-            catch
-            { 
-            
+                table._grid.Rows = e.NewValue?.ToString();
             }
         }
 
         private static void ColumnsPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            try
+            Table table = (Table)d;
+            if (table._grid != null)
             {
-                Table table = (Table)d;
-                table._grid.Columns = e.NewValue.ToString();
+                table._grid.Columns = e.NewValue?.ToString();
             }
-            catch
-            { 
-            
+        }
+        private static void ItemsCountPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            Table table = (Table)d;
+            if (table._grid != null)
+            {
+                int count = table._grid.Children.Count;
+
+                if (count > table.ItemsCount)
+                {
+                    return;
+                }
+
+                List<CellField> fields = new();
+                foreach (CellField item in table._grid.Children)
+                {
+                    fields.Add(item);
+                }
+                table._grid.Children.Clear();
+
+                for (int i = 0; i < table.ItemsCount; i++)
+                {
+                    if (fields.FirstOrDefault() is CellField cf)
+                    {
+                        fields.Remove(cf);
+                        table._grid.Children.Add(cf);
+                    }
+                    else
+                    {
+                        table._grid.Children.Add(new CellField { Type = CellType.Label, Content = (i + 1).ToString() });
+                    }
+                }
             }
         }
     }

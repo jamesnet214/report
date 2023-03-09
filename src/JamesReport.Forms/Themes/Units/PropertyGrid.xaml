@@ -51,6 +51,9 @@
             
             <Label Style="{StaticResource Label}" Content="Columns"/>
             <TextBox Style="{StaticResource TextBox}" Text="{Binding Columns, UpdateSourceTrigger=PropertyChanged}"/>
+
+            <Label Style="{StaticResource Label}" Content="ItemsCount"/>
+            <TextBox Style="{StaticResource TextBox}" Text="{Binding ItemsCount, UpdateSourceTrigger=PropertyChanged}"/>
         </ctrls:JamesGrid>
     </DataTemplate>
 

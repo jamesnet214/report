@@ -1,7 +1,4 @@
-﻿using JamesReport.Core;
-using JamesReport.Data;
-using Microsoft.VisualBasic;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 
 namespace JamesReport.Forms.UI.Units

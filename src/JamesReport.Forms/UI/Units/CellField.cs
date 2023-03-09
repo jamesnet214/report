@@ -1,6 +1,5 @@
 ﻿using JamesReport.Core;
 using JamesReport.Data;
-using System;
 using System.Windows;
 using System.Windows.Controls;
 
