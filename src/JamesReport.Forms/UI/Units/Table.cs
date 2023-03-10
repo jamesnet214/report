@@ -1,9 +1,11 @@
 ﻿using Jamesnet.Wpf.Controls;
 using JamesReport.Core;
 using JamesReport.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
+using System.Windows.Documents;
 using System.Windows.Input;
 
 namespace JamesReport.Forms.UI.Units
@@ -51,6 +53,8 @@ namespace JamesReport.Forms.UI.Units
             _grid = GetTemplateChild("PART_JamesGrid") as JamesGrid;
             _grid.Rows = Rows;
             _grid.Columns = Columns;
+            SetCellField();
+
         }
 
         private static void RowsPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
@@ -75,31 +79,36 @@ namespace JamesReport.Forms.UI.Units
             Table table = (Table)d;
             if (table._grid != null)
             {
-                int count = table._grid.Children.Count;
+                table.SetCellField();
+            }
+        }
 
-                if (count > table.ItemsCount)
+        private void SetCellField()
+        {
+            int count = _grid.Children.Count;
+
+            if (count > ItemsCount || count == ItemsCount)
+            {
+                return;
+            }
+
+            List<CellField> fields = new();
+            foreach (CellField item in _grid.Children)
+            {
+                fields.Add(item);
+            }
+            _grid.Children.Clear();
+
+            for (int i = 0; i < ItemsCount; i++)
+            {
+                if (fields.FirstOrDefault() is CellField cf)
                 {
-                    return;
+                    fields.Remove(cf);
+                    _grid.Children.Add(cf);
                 }
-
-                List<CellField> fields = new();
-                foreach (CellField item in table._grid.Children)
+                else
                 {
-                    fields.Add(item);
-                }
-                table._grid.Children.Clear();
-
-                for (int i = 0; i < table.ItemsCount; i++)
-                {
-                    if (fields.FirstOrDefault() is CellField cf)
-                    {
-                        fields.Remove(cf);
-                        table._grid.Children.Add(cf);
-                    }
-                    else
-                    {
-                        table._grid.Children.Add(new CellField { Type = CellType.Label, Content = (i + 1).ToString() });
-                    }
+                    _grid.Children.Add(new CellField { Type = CellType.Label, Content = (i + 1).ToString() });
                 }
             }
         }

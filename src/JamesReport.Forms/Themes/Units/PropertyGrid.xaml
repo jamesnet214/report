@@ -5,8 +5,9 @@
     xmlns:cnvts="clr-namespace:JamesReport.Forms.Local.Converters"
     xmlns:templ="clr-namespace:JamesReport.Forms.Local.Selectors"
     xmlns:ctrls="clr-namespace:Jamesnet.Wpf.Controls;assembly=Jamesnet.Wpf">
-    
+
     <cnvts:TypeToStringConverter x:Key="TypeToStringConverter"/>
+    <cnvts:CanvasTopChangeConverter x:Key="CanvasTopChangeConverter"/>
 
     <Style TargetType="{x:Type Label}" x:Key="Label">
         <Setter Property="Margin" Value="0 0 1 1"/>
@@ -34,14 +35,17 @@
     
     <DataTemplate x:Key="TableTemplate">
         <ctrls:JamesGrid DataContext="{Binding RelativeSource={RelativeSource AncestorType=units:PropertyGrid}, Path=DataContext}" 
-                         Rows="auto, auto, auto, auto, auto, auto" 
+                         Rows="auto, auto, auto, auto, auto, auto, auto" 
                          Columns="auto, *">
             
             <Label Style="{StaticResource Label}" Content="ActualWidth"/>
             <TextBox Style="{StaticResource TextBoxReadOnly}" Text="{Binding ActualWidth, Mode=OneWay}"/>
 
-            <Label Style="{StaticResource Label}" Content="RenderTransform.Value.OffsetX"/>
-            <TextBox Style="{StaticResource TextBox}" Text="{Binding RenderTransform.Value.OffsetX}"/>
+            <Label Style="{StaticResource Label}" Content="Top"/>
+            <TextBox Style="{StaticResource TextBox}" Text="{Binding (Canvas.Top), UpdateSourceTrigger=PropertyChanged}"/>
+
+            <Label Style="{StaticResource Label}" Content="Left"/>
+            <TextBox Style="{StaticResource TextBox}" Text="{Binding (Canvas.Left), UpdateSourceTrigger=PropertyChanged}"/>
 
             <Label Style="{StaticResource Label}" Content="Width"/>
             <TextBox Style="{StaticResource TextBox}" Text="{Binding Width, UpdateSourceTrigger=PropertyChanged}"/>

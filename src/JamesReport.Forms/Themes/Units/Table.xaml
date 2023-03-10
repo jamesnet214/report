@@ -29,18 +29,7 @@
                             <ctrls:JamesGrid x:Name="PART_JamesGrid" 
                                              Grid.IsSharedSizeScope="True"
                                              Rows="auto,auto"
-                                             Columns="auto,*,auto,*">
-                                <units:CellField Type="Label"/>
-                                <units:CellField Type="Value" ColumnSpan="3"/>
-                                <units:CellField Type="Label"/>
-                                <units:CellField Type="Value"/>
-                                <units:CellField Type="Label"/>
-                                <units:CellField Type="Value"/>
-                                <units:CellField Type="Label"/>
-                                <units:CellField Type="Value"/>
-                                <units:CellField Type="Label"/>
-                                <units:CellField Type="Value"/>
-                            </ctrls:JamesGrid>
+                                             Columns="auto,*,auto,*"/>
                         </Border>
                     </Grid>
                 </ControlTemplate>
