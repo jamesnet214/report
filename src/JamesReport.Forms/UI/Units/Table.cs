@@ -59,20 +59,20 @@ namespace JamesReport.Forms.UI.Units
 
         private static void RowsPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            Table table = (Table)d;
-            if (table._grid != null)
-            {
-                table._grid.Rows = e.NewValue?.ToString();
-            }
+            //Table table = (Table)d;
+            //if (table._grid != null)
+            //{
+            //    table._grid.Rows = e.NewValue?.ToString();
+            //}
         }
 
         private static void ColumnsPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            Table table = (Table)d;
-            if (table._grid != null)
-            {
-                table._grid.Columns = e.NewValue?.ToString();
-            }
+            //Table table = (Table)d;
+            //if (table._grid != null)
+            //{
+            //    table._grid.Columns = e.NewValue?.ToString();
+            //}
         }
         private static void ItemsCountPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {

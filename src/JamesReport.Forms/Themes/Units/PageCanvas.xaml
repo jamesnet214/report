@@ -21,15 +21,13 @@
                                     VerticalAlignment="Top"
                                     Margin="20">
                                 <Viewbox Stretch="UniformToFill">
-                                    <Canvas Width="793.44" Height="1122.24">
+                                    <Canvas x:Name="PART_Canvas" Width="793.44" Height="1122.24">
                                         <units:Header Canvas.Top="0" 
                                                       Canvas.Left="0"
                                                       FontSize="40"
                                                       FontWeight="Bold"
                                                       Content="Contract"/>
-                                        <units:HorizontalLine Canvas.Top="0" 
-                                                              Canvas.Left="0"
-                                                              Width="700"/>
+                                        <units:HorizontalLine/>
                                         <units:Header Canvas.Top="0" 
                                                       Canvas.Left="0"
                                                       Width="700"

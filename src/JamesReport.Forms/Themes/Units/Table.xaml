@@ -11,6 +11,9 @@
         <Setter Property="BorderThickness" Value="1 1 0 0"/>
         <Setter Property="BorderBrush" Value="#555555"/>
         <Setter Property="Background" Value="#ffffff"/>
+        <Setter Property="Rows" Value="Auto, Auto, Auto"/>
+        <Setter Property="Columns" Value="100, 150, 100, 150"/>
+        <Setter Property="ItemsCount" Value="9"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type units:Table}">
@@ -28,8 +31,18 @@
                                 UseLayoutRounding="{TemplateBinding UseLayoutRounding}">
                             <ctrls:JamesGrid x:Name="PART_JamesGrid" 
                                              Grid.IsSharedSizeScope="True"
-                                             Rows="auto,auto"
-                                             Columns="auto,*,auto,*"/>
+                                             Rows="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Rows, Mode=TwoWay}"
+                                             Columns="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Columns, Mode=TwoWay}">
+                                <units:CellField Type="Label"/>
+                                <units:CellField Type="Value"/>
+                                <units:CellField Type="Label" RowSpan="2"/>
+                                <units:CellField Type="Value"/>
+                                <units:CellField Type="Label"/>
+                                <units:CellField Type="Value"/>
+                                <units:CellField Type="Value"/>
+                                <units:CellField Type="Label"/>
+                                <units:CellField Type="Value" ColumnSpan="3"/>
+                            </ctrls:JamesGrid>
                         </Border>
                     </Grid>
                 </ControlTemplate>

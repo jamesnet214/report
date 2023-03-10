@@ -3,6 +3,7 @@ using Microsoft.Xaml.Behaviors.Layout;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows;
+using System.Windows.Media;
 
 namespace JamesReport.Core
 {
@@ -16,6 +17,20 @@ namespace JamesReport.Core
             MouseLeftButtonDown += DraggableRectangle_MouseLeftButtonDown;
             MouseLeftButtonUp += DraggableRectangle_MouseLeftButtonUp;
             MouseMove += DraggableRectangle_MouseMove;
+
+            // ContextMenu 생성
+            ContextMenu contextMenu = new ContextMenu();
+
+            // "삭제" 메뉴 아이템 생성
+            MenuItem deleteMenuItem = new MenuItem();
+            deleteMenuItem.Header = "삭제";
+            deleteMenuItem.Click += DeleteMenuItem_Click;
+
+            // ContextMenu에 "삭제" 메뉴 아이템 추가
+            contextMenu.Items.Add(deleteMenuItem);
+
+            // ContextMenu를 StackPanel에 연결
+            ContextMenuService.SetContextMenu(this, contextMenu);
         }
 
         private void DraggableRectangle_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -54,6 +69,17 @@ namespace JamesReport.Core
                 Canvas.SetTop(this, newTop);
 
                 lastPosition = currentPosition;
+            }
+        }
+
+        // "삭제" 메뉴 아이템 Click 이벤트 처리기
+        private void DeleteMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            // ContextMenu를 호출한 StackPanel에서 선택된 UIElement을 삭제합니다.
+            Canvas parentCanvas = VisualTreeHelper.GetParent(this) as Canvas;
+            if (parentCanvas != null)
+            {
+                parentCanvas.Children.Remove(this);
             }
         }
     }
