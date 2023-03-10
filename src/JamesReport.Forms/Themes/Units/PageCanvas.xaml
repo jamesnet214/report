@@ -22,16 +22,9 @@
                                     Margin="20">
                                 <Viewbox Stretch="UniformToFill">
                                     <Canvas x:Name="PART_Canvas" Width="793.44" Height="1122.24">
-                                        <units:Header Canvas.Top="0" 
-                                                      Canvas.Left="0"
-                                                      FontSize="40"
-                                                      FontWeight="Bold"
-                                                      Content="Contract"/>
+                                        <units:Header/>
                                         <units:HorizontalLine/>
-                                        <units:Header Canvas.Top="0" 
-                                                      Canvas.Left="0"
-                                                      Width="700"
-                                                      Content="Ipsum nulla consectetuer et id commodo in clita amet augue lorem ipsum id vel at ipsum quis. Accusam et luptatum zzril ea invidunt takimata consectetuer diam invidunt at et facer et. Takimata lorem elitr dolores nonummy dolor nonumy dolore et vel sanctus gubergren eirmod accusam lorem sed amet ut augue. Diam luptatum aliquam elitr erat dolores no dolore iusto. Dolores vero tation. Eirmod magna dolore eu et sit et ullamcorper dolor accusam no. Aliquam lorem sed amet ut autem. Et tempor diam. Lorem et erat sadipscing dolore tation consequat vero. Amet labore labore cum sadipscing justo. Erat lorem ipsum et nobis et suscipit et diam imperdiet diam augue justo ipsum ipsum adipiscing eos. Blandit kasd est in sit sit sed minim voluptua. Ut ea quod erat nonumy feugiat dolor adipiscing et eirmod ea ea et illum et invidunt ipsum vel exerci. Amet adipiscing dolor et suscipit sea dolor. Ipsum sea esse nonumy sea dolore magna rebum ipsum sed eum ullamcorper. Est nobis sadipscing erat ipsum duis facilisi sadipscing rebum dolor clita est vero aliquyam justo stet et. Dolor illum quis ea ut consequat diam at ipsum labore justo et nulla sed ipsum dignissim diam et no. Nonumy nibh invidunt rebum sanctus kasd at ut ut ea clita sit."/>
+                                        <units:Text/>
 
                                         <units:Picture Canvas.Top="0" 
                                                        Canvas.Left="0"
