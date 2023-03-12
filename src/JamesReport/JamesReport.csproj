@@ -1,32 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <OutputType>WinExe</OutputType>
-    <TargetFramework>net7.0-windows</TargetFramework>
+    <TargetFramework>net6.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
-    <ApplicationIcon>Properties\report.ico</ApplicationIcon>
   </PropertyGroup>
-
-  <ItemGroup>
-    <None Remove="Properties\emblem.png" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="Properties\report.ico" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Jamesnet.Wpf" Version="1.0.0.8" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\JamesReport.Core\JamesReport.Core.csproj" />
-    <ProjectReference Include="..\JamesReport.Forms\JamesReport.Forms.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Resource Include="Properties\emblem.png" />
-  </ItemGroup>
 
 </Project>

@@ -4,8 +4,9 @@
     xmlns:infra="clr-namespace:Infragistics.Controls.Editors;assembly=Infragistics.WPF.Controls.Editors.XamPropertyGrid"
     xmlns:views="clr-namespace:JamesReport.Forms.UI.Views"
     xmlns:units="clr-namespace:JamesReport.Forms.UI.Units">
-    
+
     <Style TargetType="{x:Type views:ReportContent}">
+        <Setter Property="Background" Value="#232323"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type views:ReportContent}">

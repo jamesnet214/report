@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\JamesReport.Core\JamesReport.Core.csproj" />
+    <ProjectReference Include="..\JamesReport.Forms\JamesReport.Forms.csproj" />
+    <ProjectReference Include="..\JamesReport\JamesReport.csproj" />
+  </ItemGroup>
+
+</Project>
