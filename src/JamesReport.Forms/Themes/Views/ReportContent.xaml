@@ -21,12 +21,19 @@
                             <units:ItemsList ItemsSource="{Binding Tools}"/>
                             <Border Grid.Column="1" 
                                     Background="#DFDFDF"/>
+                            
                             <units:PageCanvas Grid.Column="1" ReportData="{Binding ReportSource}"/>
 
-                            <Button Grid.Column="1" Content="Save" Command="{Binding SaveCommand}"
-                                    HorizontalAlignment="Left"
-                                    VerticalAlignment="Top"/>
-                            <units:PropertyGrid Grid.Column="2" DataContext="{Binding SelectedObject}"/>
+                            <StackPanel Grid.Column="2" Background="#EEEEEE">
+                                <Button Grid.Column="1" 
+                                        Content="Save" 
+                                        Padding="8 2 8 2"
+                                        Command="{Binding SaveCommand}"
+                                        HorizontalAlignment="Left"
+                                        VerticalAlignment="Top"
+                                        Margin="10"/>
+                                <units:PropertyGrid Grid.Column="2" DataContext="{Binding SelectedObject}"/>
+                            </StackPanel>
                         </Grid>
                     </Border>
                 </ControlTemplate>
