@@ -4,7 +4,8 @@
     xmlns:units="clr-namespace:JamesReport.Forms.UI.Units"
     xmlns:cnvts="clr-namespace:JamesReport.Forms.Local.Converters"
     xmlns:templ="clr-namespace:JamesReport.Forms.Local.Selectors"
-    xmlns:ctrls="clr-namespace:Jamesnet.Wpf.Controls;assembly=Jamesnet.Wpf">
+    xmlns:ctrls="clr-namespace:Jamesnet.Wpf.Controls;assembly=Jamesnet.Wpf"
+    xmlns:datas="clr-namespace:JamesReport.Forms.Local.Datas">
 
     <cnvts:TypeToStringConverter x:Key="TypeToStringConverter"/>
     <cnvts:CanvasTopChangeConverter x:Key="CanvasTopChangeConverter"/>
@@ -22,80 +23,255 @@
         <Setter Property="BorderThickness" Value="0"/>
     </Style>
 
-    <Style TargetType="{x:Type TextBox}" x:Key="TextBoxReadOnly" BasedOn="{StaticResource TextBox}">
-        <Setter Property="IsReadOnly" Value="True"/>
-    </Style>
-
     <Style TargetType="{x:Type ComboBox}" x:Key="ComboBox">
         <Setter Property="Margin" Value="0 0 1 1"/>
         <Setter Property="Padding" Value="8 4 16 4"/>
         <Setter Property="Background" Value="#FFFFFF"/>
         <Setter Property="BorderThickness" Value="0"/>
     </Style>
+
+    <Style TargetType="{x:Type ctrls:JamesGrid}" x:Key="JamesGrid">
+        <Setter Property="DataContext" Value="{Binding RelativeSource={RelativeSource AncestorType=units:PropertyGrid}, Path=DataContext}"/>
+        <Setter Property="Columns" Value="Auto, *"/>
+    </Style>
+
+    <!-- COmboBox -->
     
-    <DataTemplate x:Key="TableTemplate">
-        <ctrls:JamesGrid DataContext="{Binding RelativeSource={RelativeSource AncestorType=units:PropertyGrid}, Path=DataContext}" 
-                         Rows="auto, auto, auto, auto, auto, auto, auto" 
-                         Columns="auto, *">
-            
-            <Label Style="{StaticResource Label}" Content="ActualWidth"/>
-            <TextBox Style="{StaticResource TextBoxReadOnly}" Text="{Binding ActualWidth, Mode=OneWay}"/>
+    <Style TargetType="{x:Type ComboBox}" x:Key="Stretch" BasedOn="{StaticResource ComboBox}">
+        <Setter Property="ItemsSource" Value="{Binding StretchList, Source={x:Static datas:StretchModes.Instance}}"/>
+        <Setter Property="SelectedValue" Value="{Binding Stretch}"/>
+        <Setter Property="DisplayMemberPath" Value="Display"/>
+        <Setter Property="SelectedValuePath" Value="Value"/>
+    </Style>
 
-            <Label Style="{StaticResource Label}" Content="Top"/>
-            <TextBox Style="{StaticResource TextBox}" Text="{Binding (Canvas.Top), UpdateSourceTrigger=PropertyChanged}"/>
+    <Style TargetType="{x:Type ComboBox}" x:Key="CellType" BasedOn="{StaticResource ComboBox}">
+        <Setter Property="ItemsSource" Value="{Binding CellTypeList, Source={x:Static datas:CellTypeModes.Instance}}"/>
+        <Setter Property="SelectedValue" Value="{Binding Type}"/>
+        <Setter Property="DisplayMemberPath" Value="Display"/>
+        <Setter Property="SelectedValuePath" Value="Value"/>
+    </Style>
 
-            <Label Style="{StaticResource Label}" Content="Left"/>
-            <TextBox Style="{StaticResource TextBox}" Text="{Binding (Canvas.Left), UpdateSourceTrigger=PropertyChanged}"/>
+    <!-- ReadOnly TextBox -->
 
-            <Label Style="{StaticResource Label}" Content="Width"/>
-            <TextBox Style="{StaticResource TextBox}" Text="{Binding Width, UpdateSourceTrigger=PropertyChanged}"/>
-            
-            <Label Style="{StaticResource Label}" Content="Rows"/>
-            <TextBox Style="{StaticResource TextBox}" Text="{Binding Rows, UpdateSourceTrigger=PropertyChanged}"/>
-            
-            <Label Style="{StaticResource Label}" Content="Columns"/>
-            <TextBox Style="{StaticResource TextBox}" Text="{Binding Columns, UpdateSourceTrigger=PropertyChanged}"/>
+    <Style TargetType="{x:Type TextBox}" x:Key="TextBoxReadOnly" BasedOn="{StaticResource TextBox}">
+        <Setter Property="IsReadOnly" Value="True"/>
+    </Style>
 
-            <Label Style="{StaticResource Label}" Content="ItemsCount"/>
-            <TextBox Style="{StaticResource TextBox}" Text="{Binding ItemsCount, UpdateSourceTrigger=PropertyChanged}"/>
-        </ctrls:JamesGrid>
-    </DataTemplate>
+    <!-- TextBox -->
 
-    <DataTemplate x:Key="CellFieldTemplate">
-        <ctrls:JamesGrid DataContext="{Binding RelativeSource={RelativeSource AncestorType=units:PropertyGrid}, Path=DataContext}" 
-                         Rows="auto, auto, auto, auto, auto, auto" 
-                         Columns="auto, *">
-            
-            <Label Style="{StaticResource Label}" Content="ActualWidth"/>
-            <TextBox Style="{StaticResource TextBoxReadOnly}" Text="{Binding ActualWidth, Mode=OneWay}"/>
-            
-            <Label Style="{StaticResource Label}" Content="Cell type"/>
-            <ComboBox Style="{StaticResource ComboBox}" 
-                      SelectedValue="{Binding Type, UpdateSourceTrigger=PropertyChanged}"
-                      SelectedValuePath="Tag">
-                <ComboBoxItem Tag="Label">Label</ComboBoxItem>
-                <ComboBoxItem Tag="Value">Value</ComboBoxItem>
-            </ComboBox>
-            
-            <Label Style="{StaticResource Label}" Content="Text"/>
-            <TextBox Style="{StaticResource TextBox}" Text="{Binding Content, UpdateSourceTrigger=PropertyChanged}"/>
-            
-            <Label Style="{StaticResource Label}" Content="Padding"/>
-            <TextBox Style="{StaticResource TextBox}" Text="{Binding Padding, UpdateSourceTrigger=PropertyChanged}"/>
-            
-            <Label Style="{StaticResource Label}" Content="Row span"/>
-            <TextBox Style="{StaticResource TextBox}" Text="{Binding RowSpan, UpdateSourceTrigger=PropertyChanged}"/>
-            
-            <Label Style="{StaticResource Label}" Content="Column span"/>
-            <TextBox Style="{StaticResource TextBox}" Text="{Binding ColumnSpan, UpdateSourceTrigger=PropertyChanged}"/>
-        </ctrls:JamesGrid>
-    </DataTemplate>
+    <Style TargetType="{x:Type TextBox}" x:Key="Left" BasedOn="{StaticResource TextBox}">
+        <Setter Property="Text" Value="{Binding Path=(Canvas.Left), UpdateSourceTrigger=PropertyChanged}"/>
+    </Style>
+
+    <Style TargetType="{x:Type TextBox}" x:Key="Top" BasedOn="{StaticResource TextBox}">
+        <Setter Property="Text" Value="{Binding Path=(Canvas.Top), UpdateSourceTrigger=PropertyChanged}"/>
+    </Style>
+
+    <Style TargetType="{x:Type TextBox}" x:Key="ActualWidth" BasedOn="{StaticResource TextBoxReadOnly}">
+        <Setter Property="Text" Value="{Binding Path=ActualWidth, Mode=OneWay}"/>
+    </Style>
+
+    <Style TargetType="{x:Type TextBox}" x:Key="ActualHeight" BasedOn="{StaticResource TextBoxReadOnly}">
+        <Setter Property="Text" Value="{Binding Path=ActualHeight, Mode=OneWay}"/>
+    </Style>
+
+    <Style TargetType="{x:Type TextBox}" x:Key="Content" BasedOn="{StaticResource TextBox}">
+        <Setter Property="Text" Value="{Binding Path=Content, UpdateSourceTrigger=PropertyChanged}"/>
+    </Style>
+
+    <Style TargetType="{x:Type TextBox}" x:Key="Padding" BasedOn="{StaticResource TextBox}">
+        <Setter Property="Text" Value="{Binding Path=Padding, UpdateSourceTrigger=PropertyChanged}"/>
+    </Style>
+    
+    <Style TargetType="{x:Type TextBox}" x:Key="Width" BasedOn="{StaticResource TextBox}">
+        <Setter Property="Text" Value="{Binding Path=Width, UpdateSourceTrigger=PropertyChanged}"/>
+    </Style>
+
+    <Style TargetType="{x:Type TextBox}" x:Key="Height" BasedOn="{StaticResource TextBox}">
+        <Setter Property="Text" Value="{Binding Path=Height, UpdateSourceTrigger=PropertyChanged}"/>
+    </Style>
+
+    <Style TargetType="{x:Type TextBox}" x:Key="Rows" BasedOn="{StaticResource TextBox}">
+        <Setter Property="Text" Value="{Binding Path=Rows, UpdateSourceTrigger=PropertyChanged}"/>
+    </Style>
+
+    <Style TargetType="{x:Type TextBox}" x:Key="Columns" BasedOn="{StaticResource TextBox}">
+        <Setter Property="Text" Value="{Binding Path=Columns, UpdateSourceTrigger=PropertyChanged}"/>
+    </Style>
+
+    <Style TargetType="{x:Type TextBox}" x:Key="RowSpan" BasedOn="{StaticResource TextBox}">
+        <Setter Property="Text" Value="{Binding Path=RowSpan, UpdateSourceTrigger=PropertyChanged}"/>
+    </Style>
+
+    <Style TargetType="{x:Type TextBox}" x:Key="ColSpan" BasedOn="{StaticResource TextBox}">
+        <Setter Property="Text" Value="{Binding Path=ColSpan, UpdateSourceTrigger=PropertyChanged}"/>
+    </Style>
+
+    <Style TargetType="{x:Type TextBox}" x:Key="ItemsCount" BasedOn="{StaticResource TextBox}">
+        <Setter Property="Text" Value="{Binding Path=ItemsCount, UpdateSourceTrigger=PropertyChanged}"/>
+    </Style>
+
+    <Style TargetType="{x:Type TextBox}" x:Key="BorderThickness" BasedOn="{StaticResource TextBox}">
+        <Setter Property="Text" Value="{Binding Path=BorderThickness, UpdateSourceTrigger=PropertyChanged}"/>
+    </Style>
+
+    <Style TargetType="{x:Type TextBox}" x:Key="Background" BasedOn="{StaticResource TextBox}">
+        <Setter Property="Text" Value="{Binding Path=Background, UpdateSourceTrigger=PropertyChanged}"/>
+    </Style>
 
     <Style TargetType="{x:Type TextBlock}" x:Key="Header">
         <Setter Property="FontWeight" Value="Bold"/>
         <Setter Property="FontSize" Value="14"/>
         <Setter Property="Padding" Value="0 6 0 6"/>
+        <Setter Property="Text" Value="{Binding Converter={StaticResource TypeToStringConverter},Path=.}"/>
     </Style>
+
+    <!-- Text Template -->
+
+    <DataTemplate x:Key="TextTemplate">
+        <ctrls:JamesGrid Style="{StaticResource JamesGrid}"
+                         Rows="auto, auto, auto, auto, auto, auto, auto, auto">
+
+            <Label Style="{StaticResource Label}" Content="ActualWidth"/>
+            <TextBox Style="{StaticResource ActualWidth}"/>
+
+            <Label Style="{StaticResource Label}" Content="ActualHeigh"/>
+            <TextBox Style="{StaticResource ActualHeight}"/>
+
+            <Label Style="{StaticResource Label}" Content="Top"/>
+            <TextBox Style="{StaticResource Top}"/>
+
+            <Label Style="{StaticResource Label}" Content="Left"/>
+            <TextBox Style="{StaticResource Left}"/>
+
+            <Label Style="{StaticResource Label}" Content="Background"/>
+            <TextBox Style="{StaticResource Background}"/>
+
+            <Label Style="{StaticResource Label}" Content="BorderThickness"/>
+            <TextBox Style="{StaticResource BorderThickness}"/>
+
+            <Label Style="{StaticResource Label}" Content="Width"/>
+            <TextBox Style="{StaticResource Width}"/>
+        </ctrls:JamesGrid>
+    </DataTemplate>
+
+    <!-- HorizontalLine Template -->
+
+    <DataTemplate x:Key="HorizontalLineTemplate">
+        <ctrls:JamesGrid Style="{StaticResource JamesGrid}"
+                         Rows="auto, auto, auto, auto, auto, auto, auto, auto">
+
+            <Label Style="{StaticResource Label}" Content="ActualWidth"/>
+            <TextBox Style="{StaticResource ActualWidth}"/>
+
+            <Label Style="{StaticResource Label}" Content="ActualHeigh"/>
+            <TextBox Style="{StaticResource ActualHeight}"/>
+
+            <Label Style="{StaticResource Label}" Content="Top"/>
+            <TextBox Style="{StaticResource Top}"/>
+
+            <Label Style="{StaticResource Label}" Content="Left"/>
+            <TextBox Style="{StaticResource Left}"/>
+
+            <Label Style="{StaticResource Label}" Content="Background"/>
+            <TextBox Style="{StaticResource Background}"/>
+
+            <Label Style="{StaticResource Label}" Content="BorderThickness"/>
+            <TextBox Style="{StaticResource BorderThickness}"/>
+
+            <Label Style="{StaticResource Label}" Content="Width"/>
+            <TextBox Style="{StaticResource Width}"/>
+        </ctrls:JamesGrid>
+    </DataTemplate>
+
+    <!-- Picture Template -->
+    
+    <DataTemplate x:Key="PictureTemplate">
+        <ctrls:JamesGrid Style="{StaticResource JamesGrid}"
+                         Rows="auto, auto, auto, auto, auto, auto, auto">
+
+            <Label Style="{StaticResource Label}" Content="ActualWidth"/>
+            <TextBox Style="{StaticResource ActualWidth}"/>
+
+            <Label Style="{StaticResource Label}" Content="ActualHeigh"/>
+            <TextBox Style="{StaticResource ActualHeight}"/>
+
+            <Label Style="{StaticResource Label}" Content="Top"/>
+            <TextBox Style="{StaticResource Top}"/>
+
+            <Label Style="{StaticResource Label}" Content="Left"/>
+            <TextBox Style="{StaticResource Left}"/>
+
+            <Label Style="{StaticResource Label}" Content="Stretch"/>
+            <ComboBox Style="{StaticResource Stretch}"/>
+
+            <Label Style="{StaticResource Label}" Content="Width"/>
+            <TextBox Style="{StaticResource Width}"/>
+
+            <Label Style="{StaticResource Label}" Content="Height"/>
+            <TextBox Style="{StaticResource Height}"/>
+        </ctrls:JamesGrid>
+    </DataTemplate>
+
+    <!-- Table Template -->
+    
+    <DataTemplate x:Key="TableTemplate">
+        <ctrls:JamesGrid Style="{StaticResource JamesGrid}"
+                         Rows="auto, auto, auto, auto, auto, auto, auto">
+            
+            <Label Style="{StaticResource Label}" Content="ActualWidth"/>
+            <TextBox Style="{StaticResource ActualWidth}"/>
+
+            <Label Style="{StaticResource Label}" Content="ActualHeigh"/>
+            <TextBox Style="{StaticResource ActualHeight}"/>
+
+            <Label Style="{StaticResource Label}" Content="Top"/>
+            <TextBox Style="{StaticResource Top}"/>
+
+            <Label Style="{StaticResource Label}" Content="Left"/>
+            <TextBox Style="{StaticResource Left}"/>
+
+            <Label Style="{StaticResource Label}" Content="Width"/>
+            <TextBox Style="{StaticResource Width}"/>
+
+            <Label Style="{StaticResource Label}" Content="Rows"/>
+            <TextBox Style="{StaticResource Rows}"/>
+
+            <Label Style="{StaticResource Label}" Content="Columns"/>
+            <TextBox Style="{StaticResource Columns}"/>
+
+            <Label Style="{StaticResource Label}" Content="ItemsCount"/>
+            <TextBox Style="{StaticResource ItemsCount}"/>
+        </ctrls:JamesGrid>
+    </DataTemplate>
+
+    <!-- CellField Template -->
+    <DataTemplate x:Key="CellFieldTemplate">
+        <ctrls:JamesGrid Style="{StaticResource JamesGrid}"
+                         Rows="auto, auto, auto, auto, auto, auto">
+
+            <Label Style="{StaticResource Label}" Content="ActualWidth"/>
+            <TextBox Style="{StaticResource ActualWidth}"/>
+
+            <Label Style="{StaticResource Label}" Content="ActualHeigh"/>
+            <TextBox Style="{StaticResource ActualHeight}"/>
+
+            <Label Style="{StaticResource Label}" Content="Cell type"/>
+            <ComboBox Style="{StaticResource CellType}"/>
+
+            <Label Style="{StaticResource Label}" Content="Text"/>
+            <TextBox Style="{StaticResource Content}"/>
+
+            <Label Style="{StaticResource Label}" Content="Padding"/>
+            <TextBox Style="{StaticResource Content}"/>
+
+            <Label Style="{StaticResource Label}" Content="Row span"/>
+            <TextBox Style="{StaticResource RowSpan}"/>
+
+            <Label Style="{StaticResource Label}" Content="Column span"/>
+            <TextBox Style="{StaticResource ColSpan}"/>
+        </ctrls:JamesGrid>
+    </DataTemplate>
 
     <Style TargetType="{x:Type units:PropertyGrid}">
         <Setter Property="SnapsToDevicePixels" Value="True"/>
@@ -111,11 +287,20 @@
                     <Border Background="{TemplateBinding Background}"
                             Padding="{TemplateBinding Padding}">
                         <StackPanel>
-                            <TextBlock Style="{StaticResource Header}" Text="{Binding Converter={StaticResource TypeToStringConverter},Path=.}"/>
+                            <TextBlock Style="{StaticResource Header}"/>
                             <ContentPresenter/>
                         </StackPanel>
                     </Border>
                     <ControlTemplate.Triggers>
+                        <DataTrigger Binding="{Binding Converter={StaticResource TypeToStringConverter},Path=.}" Value="Text">
+                            <Setter Property="ContentTemplate" Value="{StaticResource TextTemplate}"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Converter={StaticResource TypeToStringConverter},Path=.}" Value="HorizontalLine">
+                            <Setter Property="ContentTemplate" Value="{StaticResource HorizontalLineTemplate}"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Converter={StaticResource TypeToStringConverter},Path=.}" Value="Picture">
+                            <Setter Property="ContentTemplate" Value="{StaticResource PictureTemplate}"/>
+                        </DataTrigger>
                         <DataTrigger Binding="{Binding Converter={StaticResource TypeToStringConverter},Path=.}" Value="Table">
                             <Setter Property="ContentTemplate" Value="{StaticResource TableTemplate}"/>
                         </DataTrigger>

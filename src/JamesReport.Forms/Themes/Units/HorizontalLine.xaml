@@ -9,6 +9,7 @@
         <Setter Property="UseLayoutRounding" Value="True"/>
         <Setter Property="HorizontalAlignment" Value="Left"/>
         <Setter Property="Width" Value="700"/>
+        <Setter Property="BorderThickness" Value="0 0 0 1"/>
         <Setter Property="Canvas.Top" Value="0"/>
         <Setter Property="Canvas.Left" Value="0"/>
         <Setter Property="Template">
@@ -18,7 +19,8 @@
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}"
                             Padding="10 30 10 30">
-                        <Rectangle Height="1" Fill="{TemplateBinding Background}"/>
+                        <Border BorderThickness="{TemplateBinding BorderThickness}" 
+                                BorderBrush="{TemplateBinding Background}"/>
                     </Border>
                 </ControlTemplate>
             </Setter.Value>
