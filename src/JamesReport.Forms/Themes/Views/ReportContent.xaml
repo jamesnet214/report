@@ -21,16 +21,12 @@
                             <units:ItemsList ItemsSource="{Binding Tools}"/>
                             <Border Grid.Column="1" 
                                     Background="#DFDFDF"/>
-                            <units:PageCanvas Grid.Column="1"/>
-                            <Grid Grid.Column="2">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                </Grid.RowDefinitions>
+                            <units:PageCanvas Grid.Column="1" ReportData="{Binding ReportSource}"/>
 
-                                <infra:XamPropertyGrid SelectedObject="{Binding SelectedObject}"/>
-                                <units:PropertyGrid Grid.Row="1" DataContext="{Binding SelectedObject}"/>
-                            </Grid>
+                            <Button Grid.Column="1" Content="Save" Command="{Binding SaveCommand}"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Top"/>
+                            <units:PropertyGrid Grid.Column="2" DataContext="{Binding SelectedObject}"/>
                         </Grid>
                     </Border>
                 </ControlTemplate>

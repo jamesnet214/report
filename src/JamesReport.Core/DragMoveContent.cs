@@ -7,7 +7,7 @@ using System.Windows.Media;
 
 namespace JamesReport.Core
 {
-    public class DragMoveContent : ReportObject
+    public abstract class DragMoveContent : ReportObject
     {
         private bool isDragging;
         private Point lastPosition;
@@ -23,7 +23,7 @@ namespace JamesReport.Core
 
             // "삭제" 메뉴 아이템 생성
             MenuItem deleteMenuItem = new MenuItem();
-            deleteMenuItem.Header = "삭제";
+            deleteMenuItem.Header = "Delete";
             deleteMenuItem.Click += DeleteMenuItem_Click;
 
             // ContextMenu에 "삭제" 메뉴 아이템 추가
@@ -80,7 +80,29 @@ namespace JamesReport.Core
             if (parentCanvas != null)
             {
                 parentCanvas.Children.Remove(this);
+
+                if (FindParent<IReportCanvas>(parentCanvas) is IReportCanvas p)
+                {
+                    p.Delete(this);
+                }
             }
+        }
+
+        public static IReportCanvas FindParent<T>(DependencyObject child) where T : IReportCanvas
+        {
+            DependencyObject parent = VisualTreeHelper.GetParent(child);
+
+            if (parent == null)
+                return null;
+
+            DependencyObject parentElement = parent as DependencyObject;
+
+            if (parent is IReportCanvas p)
+            {
+                return p;
+            }
+
+            return FindParent<T>(parent);
         }
     }
 }

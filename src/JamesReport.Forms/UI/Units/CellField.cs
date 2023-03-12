@@ -43,5 +43,37 @@ namespace JamesReport.Forms.UI.Units
             control.SetValue(Grid.RowSpanProperty, control.RowSpan);
         }
 
+        public override ReportObjectModel GetProperties()
+        {
+            ReportObjectModel obj = new();
+            obj.Width = Width;
+            obj.CellType = Type;
+            obj.FontWeight = FontWeight;
+            obj.FontSize = FontSize;
+            obj.Width = Width;
+            obj.Height = Height;
+            obj.RowSpan = RowSpan;
+            obj.ColumnSpan = ColumnSpan;
+            obj.Content = Content;
+
+            return obj;
+        }
+
+        public CellField SetProperties(ReportObjectModel obj)
+        {
+            Width = obj.Width;
+            Height = obj.Height;
+            FontWeight = obj.FontWeight;
+            FontSize = obj.FontSize;
+            FontSize = obj.FontSize;
+            Width = obj.Width;
+            Height = obj.Height;
+            RowSpan = obj.RowSpan;
+            ColumnSpan = obj.ColumnSpan;
+            Content = obj.Content;
+            Type = obj.CellType;
+
+            return this;
+        }
     }
 }

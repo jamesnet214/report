@@ -15,16 +15,16 @@ namespace JamesReport.Forms.Local.Datas
 
         public static StretchModes Instance { get { return lazy.Value; } }
 
-        public ObservableCollection<CellTypeModeModel> StretchList { get; set; }
+        public ObservableCollection<ModeModel> List { get; set; }
 
         private StretchModes()
         {
-            StretchList = new ObservableCollection<CellTypeModeModel>
+            List = new ObservableCollection<ModeModel>
             {
-                new CellTypeModeModel("None", "None"),
-                new CellTypeModeModel("Fill", "Fill"),
-                new CellTypeModeModel("Uniform", "Uniform"),
-                new CellTypeModeModel("UniformToFill", "UniformToFill"),
+                new ModeModel("None", "None"),
+                new ModeModel("Fill", "Fill"),
+                new ModeModel("Uniform", "Uniform"),
+                new ModeModel("UniformToFill", "UniformToFill"),
             };
         }
     }

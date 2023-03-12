@@ -1,21 +1,37 @@
 ﻿using JamesReport.Core;
 using JamesReport.Data;
+using JamesReport.Forms.Local.ViewModels;
+using Newtonsoft.Json;
+using System.Text;
+using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Collections;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace JamesReport.Forms.UI.Units
 {
-    public class PageCanvas : ContentControl
+    public class PageCanvas : ContentControl, IReportCanvas
     {
         public static readonly DependencyProperty SelectItemCommandProperty = DependencyProperty.Register("SelectItemCommand", typeof(ICommand), typeof(PageCanvas), new PropertyMetadata(null));
+        public static readonly DependencyProperty ReportDataProperty = DependencyProperty.Register("ReportData", typeof(ObservableCollection<ReportObject>), typeof(PageCanvas), new PropertyMetadata(null, ReportDataPropertyChanged));
+
+
         private Canvas _canvas;
 
         public ICommand SelectItemCommand
         {
             get { return (ICommand)GetValue(SelectItemCommandProperty); }
             set { SetValue(SelectItemCommandProperty, value); }
+        }
+
+        public ObservableCollection<ReportObject> ReportData
+        {
+            get { return (ObservableCollection<ReportObject>)GetValue(ReportDataProperty); }
+            set { SetValue(ReportDataProperty, value); }
         }
 
         static PageCanvas()
@@ -25,7 +41,6 @@ namespace JamesReport.Forms.UI.Units
 
         public PageCanvas()
         {
-            // Allow Drag and Drop
             AllowDrop = true;
             Drop += ListBox_Drop;
         }
@@ -33,8 +48,18 @@ namespace JamesReport.Forms.UI.Units
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
-
             _canvas = GetTemplateChild("PART_Canvas") as Canvas;
+            
+            if (ReportData != null)
+            {
+                foreach (ReportObject item in ReportData)
+                {
+                    _canvas.Children.Add(item);
+                }
+            }
+        }
+        private static void ReportDataPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
         }
 
         protected override void OnPreviewMouseLeftButtonUp(MouseButtonEventArgs e)
@@ -45,11 +70,6 @@ namespace JamesReport.Forms.UI.Units
         protected override void OnMouseLeftButtonUp(MouseButtonEventArgs e)
         {
             base.OnMouseLeftButtonUp(e);
-
-            //if (e.OriginalSource is ReportObject ro)
-            //{
-            //    SelectItemCommand?.Execute(ro);
-            //}
         }
 
         protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
@@ -66,6 +86,7 @@ namespace JamesReport.Forms.UI.Units
                 SelectItemCommand?.Execute(ro);
             }
         }
+
         public static T FindParent<T>(DependencyObject child) where T : DependencyObject
         {
             DependencyObject parent = VisualTreeHelper.GetParent(child);
@@ -101,7 +122,13 @@ namespace JamesReport.Forms.UI.Units
                 Canvas.SetTop(item, p.Y);
 
                 _canvas.Children.Add(item);
+                ReportData.Add(item);
             }
+        }
+
+        public void Delete(ReportObject del)
+        {
+            ReportData.Remove(del);
         }
     }
 }

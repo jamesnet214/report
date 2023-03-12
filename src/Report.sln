@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33312.197
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JamesReport", "JamesReport\JamesReport.csproj", "{4AC3FB80-3592-46C8-B751-6EB67BFDB0F5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JamesReport", "JamesReport\JamesReport.csproj", "{4AC3FB80-3592-46C8-B751-6EB67BFDB0F5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JamesReport.Forms", "JamesReport.Forms\JamesReport.Forms.csproj", "{C9476B04-7C67-4FC4-AA4A-3742E800E55F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JamesReport.Forms", "JamesReport.Forms\JamesReport.Forms.csproj", "{C9476B04-7C67-4FC4-AA4A-3742E800E55F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Foundation", "Foundation", "{8D07E940-7FC1-4C39-A9F1-E456C842340F}"
 EndProject
@@ -13,9 +13,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Studio", "Studio", "{824DEC
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Partial", "Partial", "{C0477EB5-69CC-40ED-95CE-BEF993A55028}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JamesReport.Core", "JamesReport.Core\JamesReport.Core.csproj", "{034C47A5-B793-421C-A63C-6809E2D685CF}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JamesReport.Data", "JamesReport.Data\JamesReport.Data.csproj", "{ED4EF6F9-E425-4195-8ED9-27B641CE2F32}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JamesReport.Core", "JamesReport.Core\JamesReport.Core.csproj", "{034C47A5-B793-421C-A63C-6809E2D685CF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,10 +33,6 @@ Global
 		{034C47A5-B793-421C-A63C-6809E2D685CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{034C47A5-B793-421C-A63C-6809E2D685CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{034C47A5-B793-421C-A63C-6809E2D685CF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{ED4EF6F9-E425-4195-8ED9-27B641CE2F32}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{ED4EF6F9-E425-4195-8ED9-27B641CE2F32}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{ED4EF6F9-E425-4195-8ED9-27B641CE2F32}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{ED4EF6F9-E425-4195-8ED9-27B641CE2F32}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -47,7 +41,6 @@ Global
 		{4AC3FB80-3592-46C8-B751-6EB67BFDB0F5} = {824DECB5-5251-4F43-ADCF-5E34461AD5EB}
 		{C9476B04-7C67-4FC4-AA4A-3742E800E55F} = {C0477EB5-69CC-40ED-95CE-BEF993A55028}
 		{034C47A5-B793-421C-A63C-6809E2D685CF} = {8D07E940-7FC1-4C39-A9F1-E456C842340F}
-		{ED4EF6F9-E425-4195-8ED9-27B641CE2F32} = {8D07E940-7FC1-4C39-A9F1-E456C842340F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E91A2335-A52C-4A3B-B24E-D5A700F8F889}

@@ -5,6 +5,8 @@
     xmlns:ctrls="clr-namespace:Jamesnet.Wpf.Controls;assembly=Jamesnet.Wpf">
 
     <Style TargetType="{x:Type units:Table}">
+        <Setter Property="Canvas.Top" Value="0"/>
+        <Setter Property="Canvas.Left" Value="0"/>
         <Setter Property="SnapsToDevicePixels" Value="True"/>
         <Setter Property="UseLayoutRounding" Value="True"/>
         <Setter Property="Margin" Value="10 10 10 10"/>
@@ -33,7 +35,7 @@
                                              Grid.IsSharedSizeScope="True"
                                              Rows="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Rows, Mode=TwoWay}"
                                              Columns="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Columns, Mode=TwoWay}">
-                                <units:CellField Type="Label"/>
+                                <!--<units:CellField Type="Label"/>
                                 <units:CellField Type="Value"/>
                                 <units:CellField Type="Label" RowSpan="2"/>
                                 <units:CellField Type="Value"/>
@@ -41,7 +43,7 @@
                                 <units:CellField Type="Value"/>
                                 <units:CellField Type="Value"/>
                                 <units:CellField Type="Label"/>
-                                <units:CellField Type="Value" ColumnSpan="3"/>
+                                <units:CellField Type="Value" ColumnSpan="3"/>-->
                             </ctrls:JamesGrid>
                         </Border>
                     </Grid>

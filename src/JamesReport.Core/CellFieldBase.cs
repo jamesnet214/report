@@ -1,6 +1,6 @@
 ﻿namespace JamesReport.Core
 {
-    public class CellFieldBase : ReportObject
+    public abstract class CellFieldBase : ReportObject
     {
         public CellFieldBase()
         {

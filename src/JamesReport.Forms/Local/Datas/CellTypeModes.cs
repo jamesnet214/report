@@ -15,14 +15,14 @@ namespace JamesReport.Forms.Local.Datas
 
         public static CellTypeModes Instance { get { return lazy.Value; } }
 
-        public ObservableCollection<CellTypeModeModel> CellTypeList { get; set; }
+        public ObservableCollection<ModeModel> List { get; set; }
 
         private CellTypeModes()
         {
-            CellTypeList = new ObservableCollection<CellTypeModeModel>
+            List = new ObservableCollection<ModeModel>
             {
-                new CellTypeModeModel("Label", "Label"),
-                new CellTypeModeModel("Value", "Value"),
+                new ModeModel("Label", "Label"),
+                new ModeModel("Value", "Value"),
             };
         }
     }

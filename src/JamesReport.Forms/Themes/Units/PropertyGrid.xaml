@@ -3,7 +3,6 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:units="clr-namespace:JamesReport.Forms.UI.Units"
     xmlns:cnvts="clr-namespace:JamesReport.Forms.Local.Converters"
-    xmlns:templ="clr-namespace:JamesReport.Forms.Local.Selectors"
     xmlns:ctrls="clr-namespace:Jamesnet.Wpf.Controls;assembly=Jamesnet.Wpf"
     xmlns:datas="clr-namespace:JamesReport.Forms.Local.Datas">
 
@@ -38,15 +37,22 @@
     <!-- COmboBox -->
     
     <Style TargetType="{x:Type ComboBox}" x:Key="Stretch" BasedOn="{StaticResource ComboBox}">
-        <Setter Property="ItemsSource" Value="{Binding StretchList, Source={x:Static datas:StretchModes.Instance}}"/>
+        <Setter Property="ItemsSource" Value="{Binding List, Source={x:Static datas:StretchModes.Instance}}"/>
         <Setter Property="SelectedValue" Value="{Binding Stretch}"/>
         <Setter Property="DisplayMemberPath" Value="Display"/>
         <Setter Property="SelectedValuePath" Value="Value"/>
     </Style>
 
     <Style TargetType="{x:Type ComboBox}" x:Key="CellType" BasedOn="{StaticResource ComboBox}">
-        <Setter Property="ItemsSource" Value="{Binding CellTypeList, Source={x:Static datas:CellTypeModes.Instance}}"/>
+        <Setter Property="ItemsSource" Value="{Binding List, Source={x:Static datas:CellTypeModes.Instance}}"/>
         <Setter Property="SelectedValue" Value="{Binding Type}"/>
+        <Setter Property="DisplayMemberPath" Value="Display"/>
+        <Setter Property="SelectedValuePath" Value="Value"/>
+    </Style>
+
+    <Style TargetType="{x:Type ComboBox}" x:Key="FontWeight" BasedOn="{StaticResource ComboBox}">
+        <Setter Property="ItemsSource" Value="{Binding List, Source={x:Static datas:FontWeightModes.Instance}}"/>
+        <Setter Property="SelectedValue" Value="{Binding FontWeight}"/>
         <Setter Property="DisplayMemberPath" Value="Display"/>
         <Setter Property="SelectedValuePath" Value="Value"/>
     </Style>
@@ -104,11 +110,15 @@
     </Style>
 
     <Style TargetType="{x:Type TextBox}" x:Key="ColSpan" BasedOn="{StaticResource TextBox}">
-        <Setter Property="Text" Value="{Binding Path=ColSpan, UpdateSourceTrigger=PropertyChanged}"/>
+        <Setter Property="Text" Value="{Binding Path=ColumnSpan, UpdateSourceTrigger=PropertyChanged}"/>
     </Style>
 
     <Style TargetType="{x:Type TextBox}" x:Key="ItemsCount" BasedOn="{StaticResource TextBox}">
         <Setter Property="Text" Value="{Binding Path=ItemsCount, UpdateSourceTrigger=PropertyChanged}"/>
+    </Style>
+
+    <Style TargetType="{x:Type TextBox}" x:Key="FontSize" BasedOn="{StaticResource TextBox}">
+        <Setter Property="Text" Value="{Binding Path=FontSize, UpdateSourceTrigger=PropertyChanged}"/>
     </Style>
 
     <Style TargetType="{x:Type TextBox}" x:Key="BorderThickness" BasedOn="{StaticResource TextBox}">
@@ -125,6 +135,38 @@
         <Setter Property="Padding" Value="0 6 0 6"/>
         <Setter Property="Text" Value="{Binding Converter={StaticResource TypeToStringConverter},Path=.}"/>
     </Style>
+
+    <!-- Header Template -->
+
+    <DataTemplate x:Key="HeaderTemplate">
+        <ctrls:JamesGrid Style="{StaticResource JamesGrid}"
+                         Rows="auto, auto, auto, auto, auto, auto, auto, auto">
+
+            <Label Style="{StaticResource Label}" Content="ActualWidth"/>
+            <TextBox Style="{StaticResource ActualWidth}"/>
+
+            <Label Style="{StaticResource Label}" Content="ActualHeigh"/>
+            <TextBox Style="{StaticResource ActualHeight}"/>
+
+            <Label Style="{StaticResource Label}" Content="Top"/>
+            <TextBox Style="{StaticResource Top}"/>
+
+            <Label Style="{StaticResource Label}" Content="Left"/>
+            <TextBox Style="{StaticResource Left}"/>
+
+            <Label Style="{StaticResource Label}" Content="FontSize"/>
+            <TextBox Style="{StaticResource FontSize}"/>
+
+            <Label Style="{StaticResource Label}" Content="FontWeight"/>
+            <ComboBox Style="{StaticResource FontWeight}"/>
+
+            <Label Style="{StaticResource Label}" Content="Width"/>
+            <TextBox Style="{StaticResource Width}"/>
+
+            <Label Style="{StaticResource Label}" Content="Text"/>
+            <TextBox Style="{StaticResource Content}"/>
+        </ctrls:JamesGrid>
+    </DataTemplate>
 
     <!-- Text Template -->
 
@@ -144,14 +186,17 @@
             <Label Style="{StaticResource Label}" Content="Left"/>
             <TextBox Style="{StaticResource Left}"/>
 
-            <Label Style="{StaticResource Label}" Content="Background"/>
-            <TextBox Style="{StaticResource Background}"/>
+            <Label Style="{StaticResource Label}" Content="FontSize"/>
+            <TextBox Style="{StaticResource FontSize}"/>
 
-            <Label Style="{StaticResource Label}" Content="BorderThickness"/>
-            <TextBox Style="{StaticResource BorderThickness}"/>
+            <Label Style="{StaticResource Label}" Content="FontWeight"/>
+            <ComboBox Style="{StaticResource FontWeight}"/>
 
             <Label Style="{StaticResource Label}" Content="Width"/>
             <TextBox Style="{StaticResource Width}"/>
+
+            <Label Style="{StaticResource Label}" Content="Text"/>
+            <TextBox Style="{StaticResource Content}"/>
         </ctrls:JamesGrid>
     </DataTemplate>
 
@@ -217,7 +262,7 @@
     
     <DataTemplate x:Key="TableTemplate">
         <ctrls:JamesGrid Style="{StaticResource JamesGrid}"
-                         Rows="auto, auto, auto, auto, auto, auto, auto">
+                         Rows="auto, auto, auto, auto, auto, auto, auto, auto">
             
             <Label Style="{StaticResource Label}" Content="ActualWidth"/>
             <TextBox Style="{StaticResource ActualWidth}"/>
@@ -248,7 +293,7 @@
     <!-- CellField Template -->
     <DataTemplate x:Key="CellFieldTemplate">
         <ctrls:JamesGrid Style="{StaticResource JamesGrid}"
-                         Rows="auto, auto, auto, auto, auto, auto">
+                         Rows="auto, auto, auto, auto, auto, auto, auto, auto">
 
             <Label Style="{StaticResource Label}" Content="ActualWidth"/>
             <TextBox Style="{StaticResource ActualWidth}"/>
@@ -263,7 +308,7 @@
             <TextBox Style="{StaticResource Content}"/>
 
             <Label Style="{StaticResource Label}" Content="Padding"/>
-            <TextBox Style="{StaticResource Content}"/>
+            <TextBox Style="{StaticResource Padding}"/>
 
             <Label Style="{StaticResource Label}" Content="Row span"/>
             <TextBox Style="{StaticResource RowSpan}"/>
@@ -274,6 +319,7 @@
     </DataTemplate>
 
     <Style TargetType="{x:Type units:PropertyGrid}">
+        <Setter Property="Width" Value="400"/>
         <Setter Property="SnapsToDevicePixels" Value="True"/>
         <Setter Property="UseLayoutRounding" Value="True"/>
         <Setter Property="Margin" Value="0"/>
@@ -292,6 +338,9 @@
                         </StackPanel>
                     </Border>
                     <ControlTemplate.Triggers>
+                        <DataTrigger Binding="{Binding Converter={StaticResource TypeToStringConverter},Path=.}" Value="Header">
+                            <Setter Property="ContentTemplate" Value="{StaticResource HeaderTemplate}"/>
+                        </DataTrigger>
                         <DataTrigger Binding="{Binding Converter={StaticResource TypeToStringConverter},Path=.}" Value="Text">
                             <Setter Property="ContentTemplate" Value="{StaticResource TextTemplate}"/>
                         </DataTrigger>

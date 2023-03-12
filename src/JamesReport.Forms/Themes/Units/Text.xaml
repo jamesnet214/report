@@ -20,7 +20,8 @@
                     <Border Background="{TemplateBinding Background}"
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}">
-                        <TextBlock Text="{TemplateBinding Content}"
+                        <TextBlock x:Name="PART_Text" 
+                                   Text="{TemplateBinding Content}"
                                    TextWrapping="WrapWithOverflow"
                                    FontSize="{TemplateBinding FontSize}"/>
                     </Border>

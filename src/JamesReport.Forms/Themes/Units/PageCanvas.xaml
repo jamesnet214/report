@@ -22,7 +22,7 @@
                                     Margin="20">
                                 <Viewbox Stretch="UniformToFill">
                                     <Canvas x:Name="PART_Canvas" Width="793.44" Height="1122.24">
-                                        <units:Header/>
+                                        <!--<units:Header/>
                                         <units:HorizontalLine/>
                                         <units:Text/>
 
@@ -33,7 +33,7 @@
                                                      Columns="60, 80, 80, 60, 80, 80"
                                                      ItemsCount="18"
                                                      Canvas.Top="0"
-                                                     Canvas.Left="0"/>
+                                                     Canvas.Left="0"/>-->
                                     </Canvas>
                                 </Viewbox>
                             </Border>
