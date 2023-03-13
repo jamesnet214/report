@@ -1,7 +1,0 @@
-﻿<Application x:Class="JamesReportDemo.App"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:JamesReportDemo"
-             xmlns:core="clr-namespace:Jamesnet.Wpf.Controls;assembly=Jamesnet.Wpf"
-                       StartupUri="MainWindow.xaml">
-</Application>

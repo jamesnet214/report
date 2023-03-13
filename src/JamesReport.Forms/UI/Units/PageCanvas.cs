@@ -49,7 +49,18 @@ namespace JamesReport.Forms.UI.Units
         {
             base.OnApplyTemplate();
             _canvas = GetTemplateChild("PART_Canvas") as Canvas;
-            
+        }
+        private static void ReportDataPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            if (d is PageCanvas pc)
+            {
+                pc.SetReportObject();
+            }
+        }
+
+        public void SetReportObject()
+        {
+
             if (ReportData != null)
             {
                 foreach (ReportObject item in ReportData)
@@ -58,9 +69,7 @@ namespace JamesReport.Forms.UI.Units
                 }
             }
         }
-        private static void ReportDataPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-        }
+
 
         protected override void OnPreviewMouseLeftButtonUp(MouseButtonEventArgs e)
         {

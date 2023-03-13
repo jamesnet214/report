@@ -1,4 +1,5 @@
-﻿using JamesReport.Forms.Local.ViewModels;
+﻿using JamesReport.Core.Events;
+using JamesReport.Forms.Local.ViewModels;
 using JamesReport.Forms.UI.Views;
 using Prism.Mvvm;
 using System;
@@ -26,6 +27,15 @@ namespace JamesReportDemo
         public MainWindow1()
         {
             InitializeComponent();
+            Loaded += MainWindow1_Loaded;
+        }
+
+        private void MainWindow1_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (DataContext is MainViewModel vm)
+            {
+                vm.Loaded();
+            }
         }
     }
 }
