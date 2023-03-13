@@ -18,7 +18,7 @@
                     <Border Background="{TemplateBinding Background}"
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}">
-                        <Image Source="/JamesReport;component/Properties/emblem.png"
+                        <Image Source="{TemplateBinding ImageSource}"
                                Stretch="{TemplateBinding Stretch}"
                                Height="{TemplateBinding Height}"
                                Width="{TemplateBinding Width}"/>
