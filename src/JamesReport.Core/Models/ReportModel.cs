@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace JamesReport.Data
+namespace JamesReport.Models
 {
     public class ReportModel
     {

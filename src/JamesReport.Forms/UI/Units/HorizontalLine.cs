@@ -1,5 +1,5 @@
 ﻿using JamesReport.Core;
-using JamesReport.Data;
+using JamesReport.Models;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;

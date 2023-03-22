@@ -23,6 +23,7 @@
   <ItemGroup>
     <ProjectReference Include="..\JamesReport.Core\JamesReport.Core.csproj" />
     <ProjectReference Include="..\JamesReport.Forms\JamesReport.Forms.csproj" />
+    <ProjectReference Include="..\JamesReport.SampleData\JamesReport.SampleData.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,5 +1,5 @@
 ﻿using JamesReport.Core;
-using JamesReport.Data;
+using JamesReport.Models;
 using JamesReport.Forms.Local.ViewModels;
 using Newtonsoft.Json;
 using System.Text;

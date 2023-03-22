@@ -1,4 +1,4 @@
-﻿namespace JamesReport.Data
+﻿namespace JamesReport.Models
 {
     public enum CellType
     {

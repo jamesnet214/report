@@ -1,6 +1,6 @@
 ﻿using Jamesnet.Wpf.Controls;
 using JamesReport.Core;
-using JamesReport.Data;
+using JamesReport.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
